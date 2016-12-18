@@ -1,0 +1,164 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>我的订单</title>
+  <link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--[[main-cont-->
+  <div class="userOrder w1000" style="width: 100%;">
+    <!--[[menuA-->
+    <div class="menuA" style="margin-left: 150px;">
+      <h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+      <h2 class="my_tt"><i class=""></i>交易管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="order.html">我的订单</a>
+        </li>
+        <li>
+          <a href="comment.html">我的评价</a>
+        </li>
+        <li>
+          <a href="integral.html">我的积分</a>
+        </li>
+        <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+      </ul>
+      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="userInfo.html">个人资料</a>
+        </li>
+        <li  class="selected">
+          <a href="accountSec.html">账户安全</a>
+        </li>
+        <li>
+          <a href="addr.html">收货地址</a>
+        </li>
+        <li>
+          <a href="collect.html">我的收藏</a>
+        </li>
+        <li>
+          <a href="member.html">会员申请</a>
+        </li>
+      </ul>
+
+    </div>
+    <!--menuA]]-->
+    <div class="contB" style="margin-right: 100px">
+      <!--[[账户安全-->
+      {volist name='list' id='vo'}
+      <div>
+        <div class="cont-tit">
+          <h2>账户安全</h2>
+        </div>
+        <div class="account_security_box">
+          <ul class="list_h_info">
+            <li><span class="attr">登录帐号：</span></li>{$vo.username}
+            <li><span class="attr">上次登录：</span><span class="change_pow">（不是您登录的？请立即更改密码）</span></li>{$vo.update_time}
+          </ul>
+          <div class="rity_list" style="text-align: center;">
+            <div class="set_title">全部安全设置</div>
+  
+            <form action="__SITE__/index/Info/doAccount" method="post">
+                <span style="font-size: 20px;"> 原密码:</span><input style="background: #f9f9f9; height: 30px;" type="password" id="oldpassword" name="oldpassword"></input><span id="old"></span><br><br>
+                <span style="font-size: 20px;"> 新密码:</span><input style="background: #f9f9f9; height: 30px;" type="password" id="password" name="password"></input><span id="pass"></span><br><br>
+                <span style="font-size: 20px;"> 确认新密码:</span><input style="background: #f9f9f9; height: 30px;" type="password" id="newpassword" name="newpassword"></input><span id="new"></span><br><br>
+                <input type="submit" value="修改" style="height: 40px;width: 80px; font-size: 25px;font-weight: bold;"></input>
+              </form>
+              <script>
+              //验证原密码
+                $("#oldpassword").blur(function () {
+
+                    $.post('checkPassword',{oldpassword:$("#oldpassword").val()},function (data) {
+
+                      if(data.status) {
+
+                        $("#old").html('<font color="green">'+data.msg+'</font>');
+                      } else {
+
+                        $("#old").html('<font color="red">'+data.msg+'</font>');
+                      }
+
+                    },'json');
+
+                });
+                //验证密码长度
+                function checkPassword()
+                {
+                  if($("#password").val()) {
+
+                    var reg = /^[a-z0-9A-Z]{6,16}$/;
+
+                    if(!reg.test($("#password").val())) {
+
+                      $("#pass").html('<font color="red">密码长度不合法</font>');
+                      
+                      return false;
+                    }else {
+
+                      $("#pass").html('<font color="green">密码合法</font>');
+                      
+                      return true;
+                    }
+                  } else {
+
+                    $("#pass").html('<font color="red">密码不能为空</font>');
+                   
+                    return false;
+
+                  }
+
+                }
+
+                $("#password").blur(function () {
+
+                  checkPassword();
+                });
+
+                //验证两次密码
+                function checkrePassword()
+                { 
+                  if($("#newpassword").val()) {
+
+                    if($("#password").val() == $("#newpassword").val()) {
+
+                      $("#new").html('<font color="green">两次密码一致</font>');
+                      
+                      return true;
+
+                    } else {
+
+                      $("#new").html('<font color="red">两次密码不一致</font>');
+                      
+                      return false;
+                    }
+                  } else {
+
+                    $("#new").html('<font color="red">密码不能为空</font>');
+                    
+                    return false;
+                  }
+                }
+
+                $("#newpassword").blur(function () {
+                  checkrePassword();
+                });
+              </script>
+          </div>
+        </div>
+      </div>
+      {/volist}
+      <!--账户安全]]-->
+    </div>
+  </div>
+</body>
+</html>
+.{include file="info/bottom" /}

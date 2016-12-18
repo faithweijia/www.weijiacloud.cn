@@ -1,0 +1,201 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人资料</title>
+<link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<!--[[main-cont-->
+	<div class="userOrder w1000" style="width: 100%;" >
+		<!--[[menuA-->
+		<div class="menuA" style="margin-left: 150px;">
+			<h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+			<h2 class="my_tt"><i class=""></i>交易管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="order.html">我的订单</a>
+        </li>
+        <li>
+          <a href="comment.html">我的评价</a>
+        </li>
+        <li>
+          <a href="integral.html">我的积分</a>
+        </li>
+        <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+      </ul>
+      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li class="selected">
+          <a href="userInfo.html">个人资料</a>
+        </li>
+        <li>
+          <a href="accountSec.html">账户安全</a>
+        </li>
+        <li>
+          <a href="addr.html">收货地址</a>
+        </li>
+        <li>
+          <a href="collect.html">我的收藏</a>
+        </li>
+         <li>
+          <a href="member.html">会员申请</a>
+        </li>
+      </ul>
+
+		</div>
+		<!--menuA]]-->
+		<div class="contB" style="margin-right: 100px">
+       <!--[[个人资料-->
+       <div class="">
+          <div class="cont-tit">
+            <h2>会员申请</h2>
+          </div>
+          <div class="personal_data">
+            <div class="personal_head">
+                请完善您的个人信息，我们会及时审核您的资料。（带*号的项目为必填项）
+            </div>
+            <form action="__SITE__/index/Info/doMember" method="post" enctype="multipart/form-data">
+            <table  class="personal_data_infro" width="100%" cellspacing="0" cellpadding="0"
+          <tr>
+            <td class="o_label"><i>*</i><label>真实姓名：</label></td>
+            <td>
+              <input type="text" placeholder="姓名，如张三" class="order_input"size="22" maxlength="14" value="" name="userTrueName" id="receiptName"><span id="name"></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="o_label"><i>*</i><label>Email：</label></td>
+            <td>
+              <input type="email" placeholder="****@qq.com" class="order_input"size="22" maxlength="14" value="" name="email">
+            </td>
+          </tr>
+          <tr>
+            <td class="o_label"><i>*</i><label>手机：</label></td>
+            <td>
+              <input type="text" placeholder="" class="order_input"size="22" maxlength="11" value="" name="userPhone" id="phone"><span id="ph"></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="o_label"><i>*</i><label>QQ：</label></td>
+            <td>
+              <input type="text" placeholder="" class="order_input"size="22" maxlength="11" value="" name="userQQ" id="userQQ"><span id="QQ"></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="o_label"><i>*</i><label>性别：</label></td>
+            <td>
+              <input type="radio" id="man"name="userSex" value="男" class="com_input"><label for="man">男</label>&nbsp;&nbsp;
+              <input type="radio" id="wman"name="userSex" value="女" class="com_input"><label for="wman">女</label>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td  class="pad_btn">
+                <div class="act" style="font-size: 14px; padding: 5px;padding-left: 0px;">
+                    <input type="submit" value="申请" class="save_btn">
+                </div>
+            </td>
+          </tr>
+        </table>
+        </form>
+        </div>
+        <script>
+        //姓名的验证
+        function checkName()
+        {
+          if($("#receiptName").val()) {
+
+            var reg = /^[\u4E00-\u9FA5]{2,4}$/;
+
+            if(!reg.test($("#receiptName").val())) {
+
+              $("#name").html('<font color="red">姓名长度不合法</font>');
+
+              return false;
+            }else {
+
+              $("#name").html('<font color="green">姓名合法</font>');
+
+              return true;
+            }
+          } else {
+
+            $("#name").html('<font color="red">姓名不能为空</font>');
+
+            return false;
+
+          }
+
+        }
+
+        $("#receiptName").blur(function () {
+
+          checkName();
+        });
+        //QQ验证
+        function checkReceiptFp()
+        {
+          if($("#userQQ").val()) {
+
+            var reg =  /^[0-9]{6,10}$/;
+
+            if(!reg.test($("#userQQ").val())) {
+
+              $("#QQ").html('<font color="red">QQ不合法</font>');
+              return false;
+            } else {
+              $("#QQ").html('<font color="green">QQ合法</font>');
+              return true;
+            }
+
+          } else {
+
+            $("#QQ").html('<font color="red">QQ不能为空</font>');
+            return false;
+          }
+        }
+        $("#userQQ").blur(function () {
+
+          checkReceiptFp();
+        });
+            //手机号验证
+            function checkPhone()
+            {
+              if($("#phone").val()) {
+
+                var reg = /^1[34578]\d{9}$/;
+
+                if(!reg.test($("#phone").val())) {
+
+                  $("#ph").html('<font color="red">手机号不合法</font>');
+                  return false;
+                } else {
+                  $("#ph").html('<font color="green">手机号合法</font>');
+                  return true;
+                }
+
+              } else {
+
+                $("#ph").html('<font color="red">手机号不能为空</font>');
+                return false;
+              }
+            }
+            $("#phone").blur(function () {
+
+              checkPhone();
+            });
+        </script>
+        </div>
+       <!--个人资料]]-->
+    		</div>
+    	</div>
+</body>
+</html>
+.{include file="info/bottom" /}

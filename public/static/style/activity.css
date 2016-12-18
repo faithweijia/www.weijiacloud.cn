@@ -1,0 +1,251 @@
+.banner{
+	height: 599px;
+    background: url(../img_activity/banner-bg.jpg) no-repeat center top;
+    overflow: hidden;
+    position:relative;
+}
+.common{
+	width: 990px;
+    margin: 0 auto;
+    position: relative;
+}
+.banner_con img{
+	vertical-align: middle;
+    border: 0;
+    width: 990px;
+    height: 200px;
+}
+.lucency{
+	position:absolute;
+	top:153px;
+	left:491px;
+	width:319px;
+	height:240px;
+}    
+.banner .lucency img{
+	vertical-align: middle;
+    border: 0;
+    margin-bottom:12px;
+}
+.lucency_02{
+	margin-left:36px;
+}
+.djs_con{
+	background:#e4e4e4;
+}
+.djs{
+    height: 209px;
+    background: url(../img_activity/djs.jpg) no-repeat center top;
+}
+.time_limit1{
+	height:515px;
+}
+.time_head1{
+	height:97px;
+}
+.time_head2{
+	height:88px;
+}
+.time_head3{
+	height:68px;
+}
+.time_foot a{
+	float:left;
+	margin-left:9px;
+}
+.time_foot img{
+	display:block;
+}
+.time_foot .time_first{
+	margin-left:11px;
+}
+.boom_list{
+	height:500px;
+}
+.boom_list1{
+	background:#e4e4e4;
+}
+.boom_bgcl{
+	background:#e4e4e4;
+	height:400px;
+}
+.boom{
+    padding: 50px 10px;
+    height: 400px;
+    width: 970px;
+    margin: 0 auto;
+    position: relative;
+}
+.boom_img{
+    width: 690px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+.boom_left .boom_img{
+	float: left;
+	
+}
+.boom_img img{
+	position:absolute;
+	top:0;
+	left:0;
+}
+.boom a{
+    width: 275px;
+    height: 400px;
+}
+.boom .img_a1{
+	background:url(../img_activity/yinhua-wen.png) no-repeat center 153px;
+}
+.boom i{
+    position: absolute;
+    border: 16px solid #e4e4e4;
+    border-bottom: 16px solid white;
+    bottom: 0;
+    right: 126px;
+}
+.boom_right .boom_img{
+    float: right;
+}
+.boom_list .boom_left a{
+	float:right;
+} 
+.boom_list .boom_right a{
+	float:left;
+}
+.boom .img_a2{
+	background:url(../img_activity/tongqin-wen.png) no-repeat center 153px;
+}
+.boom .img_a3{
+	background:url(../img_activity/qianbao-wen.png) no-repeat center 153px;
+}
+.boom .img_a4{
+	background:url(../img_activity/yaodai-wen.png) no-repeat center 153px;
+}
+/****************************男装************************/
+.trend{
+	margin-top:15px;
+	position:relative;
+}
+.trend_nav{
+	height:115px;
+	margin-bottom:15px;
+	background: #fff;
+	position:absolute;
+	left:137px;
+	z-index: 2;
+}
+.trend_nav ul{
+    width: 356px;
+    margin: 0 auto;
+    padding-left: 12px;
+    
+}
+.trend_nav ul li{
+	float:left;
+    margin-right: 40px;
+    cursor: pointer;
+    text-align: center;
+    color: #323232;
+    font-size: 20px;
+    font-family: 'Microsoft YaHei';
+}
+#last{
+	margin-right:0;
+}
+.underline{
+	border-bottoM:1px solid #323232;
+}
+.mens_clothing{
+	height:1196px;
+	padding-top:115px;
+}
+.product-list1{
+	margin-top:60px;
+	margin-bottom:20px;
+}
+.product-list{
+    width: 990px;
+    margin: 0 auto;
+    background: #fff;
+    overflow: hidden;
+    padding-top: 35px;
+}
+.product-list li{
+	float:left;
+    width: 247px;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+.product-list li img{
+    width:200px;
+    height:200px;
+    margin:0 auto;
+}
+.shop_img{
+    height: 200px;
+    margin-bottom: 23px;
+    border-left: 1px;
+}
+.shop_list{
+    margin-left: -1px;
+    background: #fff;
+    height:894px;
+}
+.product-list li a{
+    width: 200px;
+    padding: 0 23px 0 23px;
+    padding-top: 5px;
+    height: 20px;
+    color:#5d5d5d;
+    line-height: 19px;
+    overflow: hidden;
+    font-family: tahoma,arial,\5b8b\4f53,sans-serif;
+}
+.product-list li a:hover{
+	color:#D32000;
+}
+.product-list li p{
+    width: 200px;
+    height: 20px;
+    padding-left: 23px;
+    overflow: hidden;
+    line-height: 20px;
+    position: relative;
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 5px;
+    font-family: 'Microsoft Yahei';
+}
+.product-list li p b{
+	margin-right:5px;
+	
+}
+/*固定*/
+.fixation{
+	position:fixed;
+	top:0;
+	z-index: 20;
+	left:137px;
+}
+/*.time-item{
+	height: 80px;
+	text-align: center;
+	padding:90px 0 39px;
+	line-height:80px;
+}
+.time-item b{
+	color:#fff;
+	font-size:36px;
+	font-family:Arial;
+	padding-right:100px;
+}
+.time-item b strong{
+	width:60px;
+	height:60px;
+	display:inline-block;
+}*/
+
+

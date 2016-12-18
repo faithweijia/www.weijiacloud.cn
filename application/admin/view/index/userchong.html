@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="__ADSTATIC__/css/pintuer.css">
+<link rel="stylesheet" href="__ADSTATIC__/css/admin.css">
+<script src="__ADSTATIC__/js/jquery.js"></script>
+<script src="__ADSTATIC__/js/pintuer.js"></script>
+</head>
+<body>
+
+  <div class="panel admin-panel">
+    
+    <div class="padding border-bottom">
+    </div>
+    <table class="table table-hover text-center">
+      <tr>
+        <th width="100" style="text-align:left; padding-left:20px;">充值ID</th>
+        <th width="10%">金额</th>
+        <th>用户</th>
+        <th>真实姓名</th>
+        <th>银行卡</th>
+      </tr>
+      {volist name="list" id="data"}
+        <tr>
+          	<td style="text-align:left; padding-left:20px;">	
+            {$data.reId}
+           </td>
+          <td>
+           		{$data.reScore}
+          </td>
+          <td width="10%">{$data.reUser}</td>
+          <td>{$data.reName}</td>
+          <td><font color="#00CC99">{$data.reBanque}</font></td>
+        </tr>
+        {/volist}      
+    </table>
+    <div style="margin-left:400px;"></div>
+  </div>
+</body>
+</html>

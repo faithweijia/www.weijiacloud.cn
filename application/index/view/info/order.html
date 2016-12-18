@@ -1,0 +1,170 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的订单</title>
+<link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	
+    
+<!--[[main-cont-->
+	<div class="userOrder w1000" style="width: 100%;">
+		<!--[[menuA-->
+		<div class="menuA" style="margin-left: 150px;">
+			<h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+			<h2 class="my_tt"><i class=""></i>交易管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li class="selected">
+          <a href="order.html">我的订单</a>
+        </li>
+        <li>
+          <a href="comment.html">我的评价</a>
+        </li>
+        <li class="">
+          <a href="integral.html">我的积分</a>
+        </li>
+        <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+      </ul>
+      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li  class="">
+          <a href="userInfo.html">个人资料</a>
+        </li>
+        <li>
+          <a href="accountSec.html">账户安全</a>
+        </li>
+        <li>
+          <a href="addr.html">收货地址</a>
+        </li>
+        <li>
+          <a href="collect.html">我的收藏</a>
+        </li>
+        <li>
+          <a href="member.html">会员申请</a>
+        </li>
+      </ul>
+
+		</div>
+		<!--menuA]]-->
+		<div class="contB" style="margin-right: 100px">
+      <!--[[我的订单-->
+      <div class="">
+			 <div class="my-cont">
+          <div class="cont-tit">
+            <h2>我的订单</h2>
+          </div>
+          <div class="user_tab_all">
+              <div class="user_tab_menu order-status">
+                <span class="pre_tit">订单提醒：</span>
+                <ul>
+                  <li class="selected"><a href="order">所有订单</a></li>
+                  <li><a href="doPay">待付款</a></li>
+                  <li><a href="doDeliver">待发货</a></li>
+                  <li><a href="doTake">待收货</a></li>
+                  <li><a href="doRaise">待评价</a></li>
+                </ul>
+              </div>
+              <div class="infro_user_box">
+                 <div>
+                    <div class="order_box">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0" class="tb_news" >
+                        <thead>
+                        <tr>
+                          <th class="g_infro">商品信息</th>
+                          <th class="g_money">订单金额</th>
+                          <th class="g_opt">订单状态</th>
+                          <th class="g_chos">订单操作</th>
+                        </tr>
+                      </thead>
+                      {volist name='list' id='vo'}
+                      
+                      <tbody>
+                        <tr class="hr">
+                          <td colspan="4"><div style="padding-left:20px;">订单编号：<em>{$vo.orderSn}</em>
+                            <span class="dealtime" title="2014-10-18 21:59">订单时间：{$vo.create_time}</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                        <td>
+                          返回酷币：{$vo.orderScore}
+                        </td>
+                          <td>
+                            <span class="price">￥{$vo.orderMoney}</span>
+                            <span class="way">在线支付</span>
+                          </td>
+                          <td>
+                          {if $vo.orderStatus == 0}
+                          <a href="__SITE__/index/Info/particulars?id={$vo.orderId}"class="pay_btn"><span>详情</span></a>
+                          <a href="__SITE__/index/Carts/orderPayment?name={$vo.orderSn}"class="pay_btn"><span>立即支付</span></a>
+                          <div class="item-operate" style="z-index: 1;">待付款</div>
+                          {elseif $vo.orderStatus == 1}
+                          <a href="__SITE__/index/Info/particulars?id={$vo.orderId}"class="pay_btn"><span>详情</span></a>
+                            <div class="item-operate" style="z-index: 1;">待发货</div>
+                          {elseif $vo.orderStatus == 2}
+                          <a href="__SITE__/index/Info/particulars?id={$vo.orderId}"class="pay_btn"><span>详情</span></a>
+                          <a href="doAffirm?id={$vo.orderId}"class="pay_btn"><span>确认收货</span></a>
+                          <div class="item-operate" style="z-index: 1;">待收货</div>
+                          {else}
+                            <a href="__SITE__/index/Info/particulars?id={$vo.orderId}"class="pay_btn"><span>详情</span></a>
+                            <a href="__SITE__/index/Info/discuss?id={$vo.orderId}"class="pay_btn"><span>去评价</span></a>
+                            <div class="item-operate" style="z-index: 1;">待评价</div>
+                          {/if}
+                          </td>
+                          <td>
+                            <a href="doHide?id={$vo.orderId}" class="str_link"><span>删除</span></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                      {/volist}
+                      </table>
+                      {$page}
+                    </div>
+                </div>
+                 <div class="hide">  
+                 </div>
+                 <div class="hide">
+                  <div class="order_box">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0" class="tb_news" >
+                      <tbody>
+                        <tr>
+                          <td colspan="4" class="no">
+                            <div class="no_order">未找到相关记录，这就去<a href="__SITE__/index/Index/index"class="go_good">挑选商品&gt;&gt;</a></div>
+                          </td>
+                        </tr>
+                      </tbody>
+                      </table>
+                    </div>
+                 </div>
+              </div>
+            </div>
+             </div>
+              <script type="text/javascript" >
+            //<![CDATA[
+              $(function(){
+                  var $div_li =$(".user_tab_menu ul li");
+                  $div_li.click(function(){
+                  $(this).addClass("selected")            //当前<li>元素高亮
+                       .siblings().removeClass("selected");  //去掉其它同辈<li>元素的高亮
+                        var index =  $div_li.index(this);  // 获取当前点击的<li>元素 在 全部li元素中的索引。
+                  $(".infro_user_box > div")    //选取子节点。不选取子节点的话，会引起错误。如果里面还有div 
+                      .eq(index).show()   //显示 <li>元素对应的<div>元素
+                      .siblings().hide(); //隐藏其它几个同辈的<div>元素
+                })
+              })
+            //]]>
+            </script>
+       </div>
+      <!--我的订单]]-->
+    	</div>
+    </div>
+</body>
+</html>
+.{include file="info/bottom" /}

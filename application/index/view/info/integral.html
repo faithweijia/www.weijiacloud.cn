@@ -1,0 +1,100 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>我的积分</title>
+  <link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--[[main-cont-->
+  <div class="userOrder w1000" style="width: 100%;">
+    <!--[[menuA-->
+    <div class="menuA" style="margin-left: 150px;">
+      <h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+      <h2 class="my_tt"><i class=""></i>交易管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="order.html">我的订单</a>
+        </li>
+        <li>
+          <a href="comment.html">我的评价</a>
+        </li>
+        <li  class="selected">
+          <a href="integral.html">我的积分</a>
+        </li>
+        <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+      </ul>
+      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li  class="">
+          <a href="userInfo.html">个人资料</a>
+        </li>
+        <li>
+          <a href="accountSec.html">账户安全</a>
+        </li>
+        <li>
+          <a href="addr.html">收货地址</a>
+        </li>
+         <li>
+          <a href="collect.html">我的收藏</a>
+        </li>
+        <li>
+          <a href="member.html">会员申请</a>
+        </li>
+      </ul>
+
+    </div>
+    <!--menuA]]-->
+    <div class="contB" style="margin-right: 100px">
+      <!--[[积分-->
+      <div class="dg_width">
+        <div class="cont-tit">
+          <h2>我的积分</h2>
+        </div>
+        <div class="intr_box">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_integral">
+            <tbody>
+              <tr>
+                <td  class="intergral_tb2">
+                  <div class="msg">
+                    <p class="msg_p">（1）订单发货后（订单状态变为"已发货"），可收到相应积分；</p>
+                    <p class="msg_p">（2）如果发生退货的情况，将扣除所退商品的相应积分；如果该商品产生的双倍积分、消费积分，也会因为退货而全部扣回。</p>
+                    <p class="msg_p">（3）邀请人必须成功购买过（判断标准：历史订单中有“已完成”状态的订单），才能赠送邀请积分。</p>
+                  </div>
+
+                </td>
+              </tr>
+              <tr>
+              {volist name='list' id='vo'}
+                <td class="intergral_tb">
+                  <div class="integral_able">
+                    <p>剩余的金钱</p>
+                    <em>{$vo.userMoney}</em>
+                  </div>
+                  <div class="integral_able">
+                    <p>可用库币</p>
+                    <em>{$vo.CB}</em>
+                  </div>
+                  {/volist}
+                  <div style="text-align: center; line-height: 90px;">
+                    <a href="recharge.html" style="font-size: 30px;">充值</a>
+                  </div>
+                </td>
+              
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+.{include file="info/bottom" /}

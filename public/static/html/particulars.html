@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" src="../js/gain-css.js"></script>
+	<script type="text/javascript" src="../js/particulars.js"></script>
+	<script type="text/javascript" src="../js/cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style/index.css">
+	<link rel="stylesheet" type="text/css" href="../style/particulars.css">
+</head>
+<body>
+	<!--***********************header*************************-->
+	<div id="result"></div>
+	<!--***********************首页*************************-->
+	<div class="lowshou">
+		<div class="shou">
+			<a href="javascript:void(0);">首页</a>>
+			<a href="javascript:void(0);">腕表</a>>
+			<a href="javascript:void(0);">西铁城</a>>
+			<a href="javascript:void(0);">西铁城其他</a>>
+			<a href="javascript:void(0);">Citizen/西铁城 防水商务休闲机械表男表NJ0070-53F</a>
+			<p>商品编码：13473625</p>
+		</div>
+	</div>
+	<!--***********************放大镜*************************-->
+	<div class="lowfangda">
+		<div class="fangda">
+			<div class="fangdaleft">
+				<div id="album">
+					<ul class="small">
+						<li id="active_small"><img class="a1a" src="../img_particulars/small1.jpg" data-bigimg="../img_particulars/big1.jpg"/></li>
+						<li><img class="a1a" src="../img_particulars/small2.jpg" data-bigimg="../img_particulars/big2.jpg"/></li>
+						<li><img class="a1a" src="../img_particulars/small3.jpg" data-bigimg="../img_particulars/big3.jpg"/></li>
+						<li><img class="a1a" src="../img_particulars/small4.jpg" data-bigimg="../img_particulars/big4.jpg"/></li>
+					</ul>
+					<div id="magnifier">
+						<div id="sImg">
+							<!-- 正常显示的图片-->
+							<img src="../img_particulars/big1.jpg"/>
+							<!-- 滑块--> 
+							<div id="slider"></div>
+							<!--<div id="back"></div>-->
+						</div>
+						<!-- 放大镜显示的图片 -->
+						<div id="lImg"><img src="../img_particulars/big1.jpg"/></div>
+					</div>
+				</div>
+				<ul class="albumlist">
+					<li><i class="al1"></i><a href="javascript:void(0);">正品保证</a></li>
+					<li><i class="al2"></i><a href="javascript:void(0);">七天退换</a></li>
+					<li><i class="al3"></i><a href="javascript:void(0);">权威质检</a></li>
+					<li><i class="al4"></i><a href="javascript:void(0);">分享</a></li>
+					<li><i class="al5"></i><a href="javascript:void(0);">收藏商品</a></li>
+				</ul>
+			</div>
+			<div class="fangdaright">
+				<div class="fangdarightup"><h2 id="name">Citizen/西铁城 防水商务休闲机械表男表NJ0070-53F</h2></div>
+				<div class="fangdarightcenter">
+					<div><span>寺库价</span><a href="javascript:void(0);"><i>¥</i><strong id="price">2970</strong></a></div>
+					<div class="count_down">
+						<span>剩余时间</span>
+						<div id="result_count">
+							<p id="day"></p><b>天</b>
+							<p id="hour"></p><b>时</b>
+							<p id="minute"></p><b>分</b>
+							<p id="seconds"></p><b>秒</b>
+						</div>
+					</div>
+					<div class="dispatch"><span>发货地</span><a id="mainland" href="javascript:void(0);"><p class="blue">大陆</p>有货</a><em>预计下单后会在5-7天内发货 全场包邮</em></div>
+					<div><span>温馨提示</span><a href="javascript:void(0);">本商品无质量问题不支持退换货 </a></div>
+				</div>
+				<div class="fangdarightdown">
+					<div class="si1">
+						<span class="shu">购买数量</span>
+						<a href="javascript:;" id="left">－</a>
+						<input type="text" id="txt" value="1" readonly="redonly"/>
+						<a href="javascript:;" id="right">＋</a>
+						<span class="shu shu2">仅剩<p>10</p>件,抓紧时间购买哦！</span>
+					</div>
+					<div class="si2">
+						<button class="si2left">立即抢购</button>
+						<button id="join" class="si2right">加入购物车</button>
+						<div class="si3"><span></span><p>分期支付</p></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="mask_layer"></div>
+	<div id="tooltip">
+		<div class="tooltip_T">
+			<p>加入购物车成功</p>
+			<a id="close" href="javascript:;;"></a>
+		</div>
+		<div class="tooltip_C">
+			<p>添加成功</p>
+		</div>
+		<div class="tooltip_B">
+			<a class="shopping" href="../html/shopping.html">去购物车结算</a>
+			<a class="continue" href="../html/catalogue.html">继续购物</a>
+		</div>
+	</div>
+	<div class="lowinfor">
+		<div class="infor">
+			<div class="inforleft">
+				<div class="inblack">大家都在买</div>
+				<div class="inbox1" id="exe">
+					<div class="innerbox1">
+						<dl>
+							<dt><img src="../img_particulars/inner1.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner2.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner3.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner4.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner5.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="inbox1">
+					<div class="inblack">相关商品</div>
+					<div class="innerbox1">
+						<dl>
+							<dt><img src="../img_particulars/inner6.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner7.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner8.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner9.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner10.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="inbox1">
+					<div class="inblack">最近浏览的商品</div>
+					<div class="innerbox1">
+						<dl>
+							<dt><img src="../img_particulars/inner11.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner12.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner13.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner14.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+						<dl>
+							<dt><img src="../img_particulars/inner15.jpg"></dt>
+							<dd>DIOR/迪奥经典 珍珠白 大小珍珠</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			
+			<div class="inforright">
+				<div id="navigation">
+					<ul>
+						<li class="number1"><a href="javascript:void(0)";>商品详情</a></li>
+						<li><a href="javascript:void(0)";>商品鉴定</a></li>
+						<li><a href="javascript:void(0)";>售后服务</a></li>
+						<li><a href="javascript:void(0)";>购买须知</a></li>
+						<li class="shop"><a href="javascript:void(0)";>加入购物车</a></li>
+					</ul>
+				</div>
+				<div style="position:absolute;top:36px;">
+					<div class="intop1"><img src="../img_particulars/zhcx_pic_1.jpg"/></div>
+					<div class="parameter"><span class="message_1"></span></div>
+					<div com_parameter>
+						<table width:'100%' border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td class="ths">镶钻：无</td>
+									<td class="ths">认证：无</td>
+									<td class="ths">商品型号：NJ0070-53F</td>
+									<td class="ths">表带周长：200 mm</td>
+								</tr>
+								<tr>
+									<td class="ths">特殊功能：日期显示</td>
+									<td class="ths">表带颜色：银色</td>
+									<td class="ths">表扣材质：精钢</td>
+									<td class="ths">保修：全球联保</td>
+								</tr>
+								<tr>
+									<td class="ths">适用人群：男式</td>
+									<td class="ths">产地：日本</td>
+									<td class="ths">防水性能：日常生活防水</td>
+									<td class="ths">表底：背透</td>
+								</tr>
+								<tr>
+									<td class="ths">表扣类型：折叠扣</td>
+									<td class="ths">表带材质：精钢</td>
+									<td class="ths">表镜材质：蓝宝石玻璃</td>
+									<td class="ths">表壳厚度：11.5 mm</td>
+								</tr>
+								<tr>
+									<td class="ths">表盘颜色：黑色</td>
+									<td class="ths">表盘形状：圆形</td>
+									<td class="ths">表壳材质：精钢</td>
+									<td class="ths">机芯型号：8210</td>
+								</tr>
+								<tr>
+									<td class="ths">表径：43mm</td>
+									<td class="ths">机芯类型：自动机械</td>
+									<td class="ths">品牌名称：西铁城</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="parameter"><span class="message_2"></span></div>
+					<div class="top2">
+						<div class="top2left">
+							<img src="../img_particulars/brand_01.jpg">
+						</div>
+						<div class="top2right">
+							<h1>PIPISTREL</h1>
+							<p>
+		        			CITIZEN 1918年创立于日本，是全球知名腕表品牌，以为全世界公民提供高档次的产品为使命。CITIZEN希望通过“为市民所喜爱，为市民所亲近”的产品，为全人类的美好生活做贡献。作为一家庞大的跨国企业，西铁城集团在日本设有46家企业，日本海外设有64家分公司，全球合计110家分公司。一直以来，秉承永不止步的创新精神和不断向未来挑战的品牌理念，西铁城始终行进在国际腕表行业的领先地位。
+		        			</p>
+						</div>
+					</div>
+					<div class="parameter"><span class="message_3"></span></div>
+					<div class="plan">
+						<img src="../img_particulars/plan1.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan2.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan3.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan4.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan5.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan6.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan7.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan8.jpg">
+					</div>
+					<div class="plan">
+						<img src="../img_particulars/plan9.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--***********************footlist*************************-->
+	<div id="result1"></div>
+</body> 
+</html>

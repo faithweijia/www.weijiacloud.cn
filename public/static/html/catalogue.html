@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" src="../js/gain-css.js"></script>
+	<script type="text/javascript" src="../js/catalogue.js" ></script>
+	<link rel="stylesheet" href="../style/index.css">
+	<link rel="stylesheet" href="../style/particulars.css">
+	<link rel="stylesheet" href="../style/catalogue.css" />
+</head>
+<body>	
+<!--***********************header*************************-->
+<div id="result"></div>
+
+<div id="lowshou">
+	<div class="shou">
+		<a href="javascript:void(0);">全部</a>>
+		<a href="javascript:void(0);">腕表</a>>
+		<a href="javascript:void(0);">积家大师系列</a>
+	</div>	
+</div>
+<div class="subject">
+	<div class="headline">
+		<i class="adorn_L"></i>
+		<i class="adorn_R"></i>
+		<span>
+			<i class="adorn_L"></i>
+			<i class="adorn_R"></i>
+			Jaeger-LeCoultre/积家
+		</span>
+	</div>
+	<!--分列-->
+	<div id="setPageDiv" style="display:none">
+	    <select id="setPage">
+	        <option value="16">十六条数据</option>
+	        <option value="20">二十条数据</option>
+	        <option value="40">四十条数据</option>
+	    </select>
+	</div>
+	<div class="lowlist">
+		<div id="list">
+			<ul id="list_ul"></ul>
+		</div>
+		<div class="figure">
+			<ul id="Pagination" class="pagination"></ul>
+		</div>
+	</div>
+</div>
+<!--***********************footlist*************************-->
+<div id="result1"></div>
+</body>
+</html>

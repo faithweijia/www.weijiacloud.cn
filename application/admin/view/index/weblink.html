@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>商品栏目</title>  
+    <link rel="stylesheet" href="__ADSTATIC__/css/pintuer.css">
+    <link rel="stylesheet" href="__ADSTATIC__/css/admin.css">
+    <script src="__ADSTATIC__/js/jquery.js"></script>
+    <script src="__ADSTATIC__/js/pintuer.js"></script>  
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder">内容列表</strong></div>
+  <div class="padding border-bottom">  
+  <a class="button border-yellow" href="#p1"><span class="icon-plus-square-o"></span> 添加链接</a>
+  </div> 
+  <table class="table table-hover text-center">
+    <tr>
+      <th width="5%">LID</th>     
+      <th>站点名称</th>  
+      <th>站点URL</th>     
+      <th width="250">操作</th>
+    </tr>
+    {volist name="list" id="data"}
+      <td>{$data.friendId}</td>      
+      <td>{$data.friendName}</td>  
+      <td>{$data.friendUrl}</td>
+    
+      <td>
+      <div class="button-group">
+       <a class="button border-red" href="{:url('index/delLink',['friendId'=>$data.friendId])}" onclick="return del(17)"><span class="icon-trash-o"></span> 删除</a>
+      </div>
+      </td>
+    </tr> 
+  {/volist}
+   
+    <tr>
+    
+  </table>
+  
+</div>
+
+<div class="panel admin-panel margin-top">
+  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o" id="p1"></span>添加链接</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="{:url('index/addLink')}"> 
+      <div class="form-group">
+        
+        <div class="label">
+          <label>链接名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" name="friendName"/>         
+          <div class="tips"></div>
+        </div>
+      </div> 
+
+      <div class="form-group">
+        <div class="label">
+          <label>链接URL：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" name="friendUrl"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+     <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+function del(id){
+	if(confirm("您确定要删除吗?")){
+		
+	}
+}
+</script>
+
+</body></html>

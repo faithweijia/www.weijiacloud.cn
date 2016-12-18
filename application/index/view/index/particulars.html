@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/gain-css.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/particulars.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/style/index.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/style/particulars.css">
+</head>
+<body>
+	<!--***********************header*************************-->
+	<div id="result"></div>
+	<!--***********************首页*************************-->
+	<div class="lowshou">
+		<div class="shou">
+			<a href="__SITE__/index/Index/index">首页</a>>
+			{volist name='list' id='vo'}
+			{volist name='data' id='vl'}
+			{if $vo.detBigCate == $vl.cateId}
+			<a href="__SITE__/index/Index/show?id={$vl.cateId}">{$vl.cateName}</a>
+			{/if}
+			{/volist}
+			{volist name='cate' id='vl'}
+			{if $vo.detSmallCate == $vl.cateId}
+			<a href="__SITE__/index/Index/sort?id={$vl.cateId}">{$vl.cateName}</a>
+			{/if}
+			{/volist}
+			{/volist}
+		</div>
+	</div>
+	<!--***********************放大镜*************************-->
+	{volist name='list' id="vo"}
+	<div class="lowfangda">
+		<div class="fangda">
+			<div class="fangdaleft">
+				<div id="album">
+					<div id="magnifier">
+						<div id="sImg">
+							<!-- 正常显示的图片-->
+							<img src="{$vo.detPicture}"/>
+							<!-- 滑块--> 
+							<div id="slider"></div>
+							<!--<div id="back"></div>-->
+						</div>
+						<!-- 放大镜显示的图片 -->
+						<div id="lImg"><img src="{$vo.detPicture}"/></div>
+					</div>
+				</div>
+				<ul class="albumlist">
+					<li><i class="al1"></i><a href="javascript:void(0);">正品保证</a></li>
+					<li><i class="al2"></i><a href="javascript:void(0);">七天退换</a></li>
+					<li><i class="al3"></i><a href="javascript:void(0);">权威质检</a></li>
+					<li><i class="al4"></i><a href="javascript:void(0);">分享</a></li>
+					{if empty($collect)}
+					<li><i class="al5"></i><a href="doCollect?id={$_GET['id']}">收藏商品</a></li>
+					{else}
+					<li><i class="al5"></i><a href="__SITE__/index/Info/doDele?id={$_GET['id']}">已收藏收藏</a></li>
+					{/if}
+				</ul>
+			</div>
+			<div class="fangdaright">
+				<div class="fangdarightup"><h2 id="name">{$vo.detName}</h2></div>
+				<div class="fangdarightcenter">
+					<div><span>售价</span><a href="javascript:void(0);"><i>¥</i><strong id="price">{$vo.detPrice}</strong></a></div>
+					<div class="count_down">
+						<span>剩余时间</span>
+						<div id="result_count">
+							<p id="day"></p><b>天</b>
+							<p id="hour"></p><b>时</b>
+							<p id="minute"></p><b>分</b>
+							<p id="seconds"></p><b>秒</b>
+						</div>
+					</div>
+					<div class="dispatch"><span>发货地</span>
+						{if $vo.detNumber == 0}
+						<a id="mainland" href="javascript:void(0);"><p class="blue">大陆</p>无货</a>
+						{else}
+						<a id="mainland" href="javascript:void(0);"><p class="blue">大陆</p>有货</a>
+						{/if}
+						<em>预计下单后会在5-7天内发货 全场包邮</em></div>
+						<div><span>温馨提示</span><a href="javascript:void(0);">本商品无质量问题不支持退换货 </a></div>
+					</div>
+					<div class="fangdarightdown">
+					<form  method="post" action="addCarts">
+						<div class="si1">
+							<span class="shu">购买数量</span>
+							<a href="javascript:;" id="left">－</a>
+							<input type="text" id="txt" name="number" value="1" readonly="redonly"/>
+							<a href="javascript:;" id="right">＋</a>
+							<span class="shu shu2" id="shu">仅剩{$vo.detNumber}件,抓紧时间购买哦！</span>
+						</div>
+					</form>
+						<div class="si2">
+							<button id="fight" class="si2left">立即抢购</button>
+							<button id="account" class="si2right">加入购物车</button>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+		<script>
+		$(function () {
+			//立即抢购
+			$("#fight").click(function () {
+
+				$.post('fightBuy',{detNumber:$("#txt").val(),detId:{$vo.detId},detPrice:{$vo.detPrice},detScore:{$vo.detScore}},function (data) {
+
+					if(data.status) {
+
+						alert(data.msg);
+
+						location.href = '__SITE__/index/Carts/makeOrder';
+					} else {
+						alert(data.msg);
+					}
+
+				},'json');
+			});
+			//检查商品数量
+			$("#right").click(function () {
+
+				$.post('checkNumber',{detNumber:$("#txt").val(),detId:{$vo.detId}},function (data) {
+
+					if(data.status) {
+
+						$("#shu").html('你想要的宝贝没有那么多了哟');
+
+					}
+
+				},'json');
+			});
+
+			$("#left").click(function () {
+
+				$.post('checkNumber',{detNumber:$("#txt").val(),detId:{$vo.detId}},function (data) {
+
+					if(data.status) {
+
+						$("#shu").html('仅剩'+{$vo.detNumber}+'件,抓紧时间购买哦');
+
+					}
+
+				},'json');
+			});
+
+			//加入购物车
+			$("#account").click(function () {
+
+				$.post('shopCar',{cartId:{$vo.detId},cartNumber:$("#txt").val(),cartPrice:{$vo.detPrice},score:{$vo.detScore}},function (data) {
+
+					if(data.status) {
+
+					} else {
+
+					}
+
+				},'json');
+
+			});
+		});
+		</script>
+		{if session('username')}
+		<div id="mask_layer"></div>
+		<div id="tooltip">
+			<div class="tooltip_T">
+				<p>加入购物车成功</p>
+				<a id="close" href="javascript:;;"></a>
+			</div>
+			<div class="tooltip_C">
+				<p>添加成功</p>
+			</div>
+			<div class="tooltip_B">
+				<a class="shopping" href="__SITE__/index/Carts/Cartts">去购物车结算</a>
+				<a class="continue" href="__SITE__/index/Index/index">继续购物</a>
+			</div>
+		</div>
+		{else}
+		<div id="mask_layer"></div>
+		<div id="tooltip">
+			<div class="tooltip_T">
+				<p>未登录</p>
+				<a id="close" href="javascript:;;"></a>
+			</div>
+			<div class="tooltip_C">
+				<p>请先登录</p>
+			</div>
+			<div class="tooltip_B">
+				<a class="shopping" href="__SITE__/index/User/login">登录</a>
+				<a class="continue" href="__SITE__/index/Index/index">回到首页</a>
+			</div>
+		</div>
+		</div>
+		{/if}
+
+		{/volist}
+
+
+		
+		<div class="lowinfor">
+			<div class="infor">
+				<div class="inforleft">
+					<div class="inblack">大家都在买</div>
+					<div class="inbox1" id="exe">
+						<div class="innerbox1">
+							{volist name='sale' id='vl'}
+							<dl>
+								<dt><img src="{$vl.detPicture}"></dt>
+								<dd>{$vl.detName}</dd>
+							</dl>
+							{/volist}
+						</div>
+					</div>
+				</div>
+
+				<div class="inforright">
+					<div id="navigation">
+						<ul>
+							<li class="number1"><a href="javascript:void(0)";>商品详情</a></li>
+							<li><a href="javascript:void(0)";>商品鉴定</a></li>
+							<li><a href="javascript:void(0)";>售后服务</a></li>
+							<li><a href="javascript:void(0)";>购买须知</a></li>
+							<li class="shop"><a href="javascript:void(0)";>加入购物车</a></li>
+						</ul>
+					</div>
+		<div style="position:absolute;top:36px;">
+			<div class="intop1"><img src="__STATIC__/img_particulars/zhcx_pic_1.jpg"/></div>
+			<div class="parameter"><span class="message_1"></span></div>
+			<div com_parameter>
+				<table width:'100%' border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td class="ths">镶钻：无</td>
+							<td class="ths">认证：无</td>
+							<td class="ths">商品型号：NJ0070-53F</td>
+							<td class="ths">表带周长：200 mm</td>
+						</tr>
+						<tr>
+							<td class="ths">特殊功能：日期显示</td>
+							<td class="ths">表带颜色：银色</td>
+							<td class="ths">表扣材质：精钢</td>
+							<td class="ths">保修：全球联保</td>
+						</tr>
+						<tr>
+							<td class="ths">适用人群：男式</td>
+							<td class="ths">产地：日本</td>
+							<td class="ths">防水性能：日常生活防水</td>
+							<td class="ths">表底：背透</td>
+						</tr>
+						<tr>
+							<td class="ths">表扣类型：折叠扣</td>
+							<td class="ths">表带材质：精钢</td>
+							<td class="ths">表镜材质：蓝宝石玻璃</td>
+							<td class="ths">表壳厚度：11.5 mm</td>
+						</tr>
+						<tr>
+							<td class="ths">表盘颜色：黑色</td>
+							<td class="ths">表盘形状：圆形</td>
+							<td class="ths">表壳材质：精钢</td>
+							<td class="ths">机芯型号：8210</td>
+						</tr>
+						<tr>
+							<td class="ths">表径：43mm</td>
+							<td class="ths">机芯类型：自动机械</td>
+							<td class="ths">品牌名称：西铁城</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="text-align: center;">
+				{volist name='comment' id='vo'}
+				<table style="height: 100px; font-size: 30px; color: blue;">
+					<tr>
+						<td>
+							评论人：{$vo.commentUser}
+						</td>
+						<td>
+							&nbsp;&nbsp;评论时间：{$vo.commentAddtime}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							评论内容：
+						</td>
+						<td>
+							{$vo.commentContent}
+						</td>
+					</tr>
+				</table>
+				{/volist}
+			</div>				
+		</div>
+	<!--***********************footlist*************************-->
+	<div id="result1"></div>
+	</body> 
+</html>

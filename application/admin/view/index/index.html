@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>后台管理中心</title>  
+    <link rel="stylesheet" href="__ADSTATIC__/css/pintuer.css">
+    <link rel="stylesheet" href="__ADSTATIC__/css/admin.css">
+    <script src="__ADSTATIC__/js/jquery.js"></script>   
+</head>
+<body style="background-color:#f2f9fd;">
+    <div class="header bg-main">
+        <div class="logo margin-big-left fadein-top">
+            <h1><img src="__ADSTATIC__/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
+        </div>
+        <div class="head-l">
+            <a class="button button-little bg-green" href="__ADSITE__" target="_blank"><span class="icon-home"></span> 前台首页</a> 
+            &nbsp;&nbsp;
+            <a href="##" class="button button-little bg-blue"><span class="icon-wrench"></span> 清除缓存</a> 
+            &nbsp;&nbsp;
+            <a class="button button-little bg-red" href="__ADSITE__/admin/Index/loginout"><span class="icon-power-off"></span> 退出登录</a>
+            <a class="button button-little" >管理员：{:session('user')}</a>
+        </div>
+    </div>
+    <div class="leftnav" style="overflow:auto;height:550px;">
+        <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
+        <h2><span class="icon-user"></span>基本设置</h2>
+        <ul style="display:block">
+            <li><a href="{:url('index/webInfo')}" target="right"><span class="icon-caret-right"></span>站点信息</a></li> 
+            <li><a href="{:url('index/webLink')}" target="right"><span class="icon-caret-right"></span>友情链接</a></li>          
+            <li><a href="{:url('index/modPass')}" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
+            <li><a href="{:url('index/addAdmin')}" target="right"><span class="icon-caret-right"></span>添加管理员</a></li>  
+            <li><a href="__ADSITE__/admin/index/turn" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>   
+            <li><a href="__ADSITE__/admin/index/comment" target="right"><span class="icon-caret-right"></span>评论管理</a></li>     
+            
+        </ul>   
+        <h2><span class="icon-pencil-square-o"></span>商品管理</h2>
+        <ul>
+           <!--  <li><a href="__ADSITE__/admin/index/column" target="right"><span class="icon-caret-right"></span>商品栏目</a></li> -->
+            <li><a href="__ADSITE__/admin/index/category" target="right"><span class="icon-caret-right"></span>商品版块</a></li>
+            <li><a href="__ADSITE__/admin/index/addCategory" target="right"><span class="icon-caret-right"></span>添加版块</a></li>
+            <li><a href="__ADSITE__/admin/index/goodsList" target="right"><span class="icon-caret-right"></span>商品列表</a></li>
+            <li><a href="__ADSITE__/admin/index/addGoods" target="right"><span class="icon-caret-right"></span>添加商品</a></li>
+            <li><a href="__ADSITE__/admin/index/goodsRecyle" target="right"><span class="icon-caret-right"></span>商品回收站</a></li>
+            <li><a href="__ADSITE__/admin/index/goodsSale" target="right"><span class="icon-caret-right"></span>寄卖的商品</a></li>
+            <li><a href="__ADSITE__/admin/index/userSale" target="right"><span class="icon-caret-right"></span>寄卖商品信息</a></li>          
+        </ul>
+        <h2><span class="icon-pencil-square-o"></span>用户管理</h2>
+        <ul>
+            <li><a href="{:url('index/userList')}" target="right"><span class="icon-caret-right"></span>编辑用户</a></li>
+            <li><a href="{:url('index/verifyMem')}" target="right"><span class="icon-caret-right"></span>认证会员</a></li>
+            <li><a href="{:url('index/userDel')}" target="right"><span class="icon-caret-right"></span>用户黑名单</a></li>
+            <li><a href="{:url('index/userRe')}" target="right"><span class="icon-caret-right"></span>用户充值</a></li>
+            <li><a href="{:url('index/userChong')}" target="right"><span class="icon-caret-right"></span>充值记录</a></li>
+            
+            <li><a href="__ADSITE__/admin/index/forbidIP" target="right"><span class="icon-caret-right"></span>禁止IP</a></li>                 
+        </ul>
+        <h2><span class="icon-pencil-square-o"></span>订单管理</h2>
+        <ul>
+            <li><a href="{:url('index/userOrder')}" target="right"><span class="icon-caret-right"></span>用户订单</a></li> 
+            <li><a href="{:url('index/OrderRecycle')}" target="right"><span class="icon-caret-right"></span>订单回收站</a></li>               
+        </ul>    
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".leftnav h2").click(function(){
+           $(this).next().slideToggle(200); 
+           $(this).toggleClass("on"); 
+    })
+    $(".leftnav ul li a").click(function(){
+        $("#a_leader_txt").text($(this).text());
+        $(".leftnav ul li a").removeClass("on");
+        $(this).addClass("on");
+    })
+});
+</script>
+
+<ul class="bread">
+    <li><a href="__ADSITE__/admin/index/index" class="icon-home"> 首页</a></li>
+    <li><a href="##" id="a_leader_txt">网站信息</a></li>
+</ul>
+
+<div class="admin">
+    <iframe rameborder="0" src="{:url('index/webInfo')}" name="right" width="100%" height="98%"></iframe>
+</div>
+</body>
+</html>

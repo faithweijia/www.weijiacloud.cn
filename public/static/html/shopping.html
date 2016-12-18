@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" href="../style/shopping.css" />
+		<script type="text/javascript" src="../js/jquery-1.12.2.min.js" ></script>
+		<script type="text/javascript" src="../js/cookie.js" ></script>
+	</head>
+	<body>
+		<!------------------header--------------------->
+		<div class="top">
+			<div class="top_logo">
+				<div class="logo_L">
+					<a href="../index.html"><img src="../img_common/logo.png" /></a>
+				</div>
+				<div class="logo_R">
+					<img src="../img_common/top_shop.jpg" />
+				</div>
+			</div>
+		</div>
+		<!-----------------------购物车----------------------->
+		<div class="centerBox">
+			<div class="conceal_S" id="mystical1">
+				<div class="log_in">
+					<p>现在<a href="enter.html">登录</a>您购物车中的商品将被永久保存</p>
+				</div>
+				<div class="cartsList">
+			        <table cellspacing="0" cellpadding="0" border="0" class="carTable">
+			        	<thead>
+			        		<tr>
+			        			<th width="75px">
+			        				<input type="checkbox"  id="choseAll" checked/>
+			        				<label for="choseAll">全选</label>
+			        			</th>
+			        			<th width="355px">商品名称</th>
+			        			<th width="96px">发货站</th>
+			        			<th width="96px">价格</th>
+			        			<th width="140px">数量</th>
+			        			<th width="110px">金额小计</th>
+			        			<th width="110px">操作</th>
+			        		</tr>
+			        	</thead>
+			        	<tbody id="cart-list">
+			        	</tbody>
+			        </table>
+			    </div>
+			    <div class="settle" id="mystical2">
+			    	<div class="correlation_L">
+			    		<input type="checkbox"  id="settle_ck" checked/>
+	    				<label for="settle_ck">全选</label>
+			    	</div>
+			    	<div class="correlation_R">
+			    		<a href="javascript:void(0);">删除选中商品</a>
+			    	</div>
+			    	<p>商品数量总计：<span id="number">1</span>件</p>
+			    	<p>包装数量总计：0件</p>
+			    	<p>返利库币：199库币</p>
+			    	<p class="total">商品金额总计（不含运费）：<b class="total_Z"></b></p>
+			    	<p class="clearfix">
+			    		<a href="particulars.html">继续购物</a>
+			    		<a class="account" href="javascript:void(0);">立即结算</a>
+			    	</p>
+			    </div>
+		    </div>	
+		    <div class="conceal_H" style="-display:block;">
+				<div class="support">
+					<div class="typeface">
+						<p>购物车内暂时没有商品，您可以：</p>
+						<a href="../index.html">返回首页挑选商品</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!----------------------------猜你喜欢--------------------------->
+		<div class="like">
+			<div class="cartSmsg">
+				<h3 class="ch3">猜你喜欢</h3>
+				<div class="mList01">
+		        	<dl>
+		        		<dt><img src="../img_common/like_01.jpg" /></dt>
+		        		<dd>【上海地区】奔驰 CLS级</dd>
+		        		<p class="money"><b>3000</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_02.jpg" /></dt>
+		        		<dd>ROLEX/劳力士潜航者型系列</dd>
+		        		<p class="money"><b>62800</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_03.jpg" /></dt>
+		        		<dd>航空装备·黑科技·美国 光启</dd>
+		        		<p class="money"><b>20000</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_04.jpg" /></dt>
+		        		<dd>CARTIER/卡地亚 LOVE系列</dd>
+		        		<p class="money"><b>45600</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_05.jpg" /></dt>
+		        		<dd>BVLGARI/宝格丽 女士</dd>
+		        		<p class="money"><b>3580</b>元</p>
+		        	</dl>
+				</div>
+			</div>
+			<div class="cartSmsg">
+				<h3 class="ch3">最近浏览</h3>
+				<div class="mList01">
+					<dl>
+		        		<dt><img src="../img_common/like_06.jpg" /></dt>
+		        		<dd>Jaeger-LeCoultre/积家Master</dd>
+		        		<p class="money"><b>39800</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_07.jpg" /></dt>
+		        		<dd>Citizen/西铁城 防水商务休闲</dd>
+		        		<p class="money"><b>2970</b>元</p>
+		        	</dl>
+		        	<dl>
+		        		<dt><img src="../img_common/like_08.jpg" /></dt>
+		        		<dd>GUCCI/古驰 牛皮人字拖 沙</dd>
+		        		<p class="money"><b>2389</b>元</p>
+		        	</dl>
+				</div>
+			</div>
+		</div>
+		<div class="footer_shop">
+			<div class="footer_top">
+				<div class="listTop_L">
+					<ul>
+						<li class="one">
+							<div class="sliding"><p></p><span></span></div>
+							<div class="character">正品保障</div>
+						</li>
+						<li class="wire"></li>
+						<li class="two">
+							<div class="sliding"><p></p><span></span></div>
+							<div class="character">七天维修</div>
+						</li>
+						<li class="wire"></li>
+						<li class="three">
+							<div class="sliding"><p></p><span></span></div>
+							<div class="character">维修保养</div>
+						</li>
+						<li class="wire"></li>
+						<li class="four">
+							<div class="sliding"><p></p><span></span></div>
+							<div class="character">权威鉴定</div>
+						</li>
+						<li class="wire"></li>
+						<li class="five">
+							<div class="sliding"><p></p><span></span></div>
+							<div class="character">管家服务</div>
+						</li>
+					</ul>
+				</div>
+				<div class="listTop_C">
+					<ul>
+						<li>
+							<a class="toptext" href="">关注寺库微信</a>
+							<img src="../img_common/weixin.jpg"/>
+							<a class="bottomtext" href="">扫一扫有惊喜</a>
+						</li>
+						<li>
+							<a class="toptext" href="">下载寺库APP</a>
+							<img src="../img_common/app.jpg"/>
+							<a class="bottomtext" href="">扫一扫有惊喜</a>
+						</li>
+					</ul>
+				</div>
+				<div class="listTop_R">
+					<div class="else">
+						<a href="javascript:void(0);">加入寺库</a>
+						<a href="javascript:void(0);">关于寺库</a>
+						<a href="javascript:void(0);">联系我们</a>
+						<a href="javascript:void(0);">支付方式</a>
+						<a href="javascript:void(0);">帮助中心</a>
+						<a href="javascript:void(0);">售后服务</a>
+						<a href="javascript:void(0);">免责声明</a>
+						<a href="javascript:void(0);">礼品采购</a>
+						<a href="javascript:void(0);">寺库微博</a>
+						<a href="javascript:void(0);">友情链接</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bottom">
+				<p>京ICP备09084709号-3 京公网安备110105004373号</p>
+				<a href="javascript:void(0);"><img src="../img_common/foot_pic01.png" /></a>
+				<a href="javascript:void(0);"><img src="../img_common/foot_pic02.png" /></a>
+				<a href="javascript:void(0);"><img src="../img_common/gongshangju.png" /></a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/shopping.js" ></script>
+</html>

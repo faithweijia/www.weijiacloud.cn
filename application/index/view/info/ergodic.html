@@ -1,0 +1,116 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的订单</title>
+<link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	
+<!--[[main-cont-->
+	<div class="userOrder w1000" style="width: 100%;">
+		<!--[[menuA-->
+		<div class="menuA" style="margin-left: 150px;">
+			<h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+			<h2 class="my_tt"><i class=""></i>交易管理</h2>
+		    <ul class="base_list" style="display: block;">
+		        <li>
+		          <a href="order.html">我的订单</a>
+		        </li>
+		        <li  class="selected">
+		          <a href="comment.html">我的评价</a>
+		        </li>
+		        <li class="">
+		          <a href="integral.html">我的积分</a>
+		        </li>
+            <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+		      </ul>
+		      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+		      <ul class="base_list" style="display: block;">
+		        <li  class="">
+		          <a href="userInfo.html">个人资料</a>
+		        </li>
+		        <li>
+		          <a href="accountSec.html">账户安全</a>
+		        </li>
+		        <li>
+		          <a href="addr.html">收货地址</a>
+		        </li>
+            <li>
+            <a href="collect.html">我的收藏</a>
+            </li>
+            <li>
+            <a href="member.html">会员申请</a>
+            </li>
+		      </ul>
+
+		</div>
+		<!--menuA]]-->
+		<div class="contB" style="margin-right: 100px">
+      <!--[[评价-->
+		<div>
+          <div class="cont-tit">
+            <h2>商品评价</h2>
+          </div>
+          <div class="order_box">
+          {if !empty($list)}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="tb_pjs">
+                <thead>
+                <tr>
+                  <th class="g_infro">寄卖的商品</th>
+                  <th class="g_time">商品图片</th>
+                  <th class="g_pj">寄卖价格</th>
+                  <th style="width:30px;">寄卖数量</th>
+                </tr>
+              </thead>
+              {volist name="list" id='vo'}
+              <tbody>
+                <tr>
+                  <td>
+                    <p class="auction">
+                      {$vo.detName}
+                  </p>
+                  </td>
+                  <td><img src="{$vo.detPicture}"  style="width: 50px;height: 50px;"></td>
+                  <td>
+                      <span class="price"><em>{$vo.detPrice}</em>元</span>
+                  </td>
+                  <td>{$vo.detNumber}</td>
+                </tr>
+              </tbody>
+              {/volist}
+              </table>
+              {else}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="tb_no_pjs">
+                <thead>
+                <tr>
+                  <th class="g_infro">寄卖的商品</th>
+                  <th class="g_time">商品图片</th>
+                  <th class="g_pj">寄卖价格</th>
+                  <th class="g_pj">寄卖数量</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <p class="no_p">暂无商品</p>
+                  </td>
+                </tr>
+              </tbody>
+              </table>
+              {/if}
+            </div>
+       </div>
+       <!--评价]]-->
+    	</div>
+    	</div>
+</body>
+</html>
+.{include file="info/bottom" /}

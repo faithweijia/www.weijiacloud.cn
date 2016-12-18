@@ -1,0 +1,552 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>收货地址</title>
+  <link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--[[main-cont-->
+  <div class="userOrder w1000" style="width: 100%;">
+    <!--[[menuA-->
+    <div class="menuA" style="margin-left: 150px;">
+      <h1 class="m_top_tit"><a href="javascript:;">我的交易</a></h1>
+      <h2 class="my_tt"><i class=""></i>交易管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="order.html">我的订单</a>
+        </li>
+        <li>
+          <a href="comment.html">我的评价</a>
+        </li>
+        <li>
+          <a href="integral.html">我的积分</a>
+        </li>
+        <li class="">
+          <a href="sale.html">寄卖</a>
+        </li>
+        <li class="">
+          <a href="ergodic.html">寄卖的商品</a>
+        </li>
+      </ul>
+      <h2 class="my_tt"><i class=""></i>账户管理</h2>
+      <ul class="base_list" style="display: block;">
+        <li>
+          <a href="userInfo.html">个人资料</a>
+        </li>
+        <li>
+          <a href="accountSec.html">账户安全</a>
+        </li>
+        <li class="selected">
+          <a href="addr.html">收货地址</a>
+        </li>
+        <li>
+          <a href="collect.html">我的收藏</a>
+        </li>
+        <li>
+          <a href="member.html">会员申请</a>
+        </li>
+      </ul>
+
+    </div>
+    <!--menuA]]-->
+    <div class="contB" style="margin-right: 100px">
+      <!--[[收货地址-->
+      <div class="">
+        <!--[[修改与删除-->
+        <script type="text/javascript">
+          function isModify(){
+            $('#addressNew').show();
+            $('.addAddress').hide();
+            $('.modifyAddress').show();
+          }
+          function isAdd(){
+            $('#addressNew').show();
+            $('.modifyAddress').hide();
+            $('.addAddress').show();
+          }
+          $(function(){
+            $('.delete_ico').click(function(){
+              if(true){
+                $(this).parent().parent().remove();
+              }
+            })
+          })
+          function isCancel(){
+            $('#addressNew').hide();
+          }
+
+        </script>
+        <!--[[修改与删除-->
+        <div class="cont-tit">
+          <h2>收货地址</h2>
+        </div>
+        <div class="sh_address_box">
+          <div class="yy_address">
+          <form method="post" action="">
+            <table width="850" cellpadding="0" cellspacing="0" border="0" class="tb_news">
+              <thead>
+                <tr>
+                  <th class="s_name">收货人</th>
+                  <th class="s_addr">收件地址</th>
+                  <th class="s_tel">手机号码</th>
+                  <th class="s_postal">邮编</th>
+                  <th class="s_opt">操作</th>
+                </tr>
+              </thead>
+              {volist name='list' id='vo'}
+              <tbody>
+                <tr>
+                  <td>{$vo.receiptName}</td>
+                  <td class="infro_td">{$vo.province}-{$vo.city}-{$vo.district}-{$vo.receiptStreet}</td>
+                  <td>{$vo.receiptPhone}</td>
+                  <td>{$vo.receiptZip}</td>
+                  <td>
+                    <a class="modify_ico" href="javascript:void(0);" onclick="isModify(id={$vo.receiptId})">修改</a>&nbsp;|
+                    <a class="delete_ico" href="__SITE__/index/Info/doDelete?id={$vo.receiptId}" onclick="return confirm(&quot;确认删除？&quot;);">删除</a>
+                    {if $vo.receiptFirst == 1}
+                    <a href="javascript:void(0);">首选地址</a>
+                    {else}
+                    <a href="__SITE__/index/Info/doFirst?id={$vo.receiptId}">设为首选地址</a>
+                    {/if}
+                  </td>
+                </tr>
+              </tbody>
+              {/volist}
+            </table>
+            </form>
+          </div>
+          <!--[[新增按钮-->
+          <div class="address_add">
+            <a href="javascript:void(0);" onclick="isAdd()" class="add_btn">添加新地址</a>
+          </div>
+          <!--新增按钮]]-->
+          <!--[[新增收货人信息-->
+          <!--[[省份-->
+          <div class="news_addr" id="addressNew" style="display:none;">
+            <h2 class="name_addr">
+              <span class="addAddress" style="display: none;">新增收货地址</span>
+              <span class="modifyAddress" style="display: none;">修改收货地址</span>
+            </h2>
+            <script type="text/javascript">
+              $(function (){
+                initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '13', '0', '0');
+              });
+
+//得到地区码
+function getAreaID(){
+  var area = 0;          
+  if($("#seachdistrict").val() != "0"){
+    area = $("#seachdistrict").val();                
+  }else if ($("#seachcity").val() != "0"){
+    area = $("#seachcity").val();
+  }else{
+    area = $("#seachprov").val();
+  }
+  return area;
+}
+
+function showAreaID() {
+//地区码
+var areaID = getAreaID();
+//地区名
+var areaName = getAreaNamebyID(areaID) ;
+alert("您选择的地区码：" + areaID + "      地区名：" + areaName);            
+}
+
+//根据地区码查询地区名
+function getAreaNamebyID(areaID){
+  var areaName = "";
+  if(areaID.length == 2){
+    areaName = area_array[areaID];
+  }else if(areaID.length == 4){
+    var index1 = areaID.substring(0, 2);
+    areaName = area_array[index1] + " " + sub_array[index1][areaID];
+  }else if(areaID.length == 6){
+    var index1 = areaID.substring(0, 2);
+    var index2 = areaID.substring(0, 4);
+    areaName = area_array[index1] + " " + sub_array[index1][index2] + " " + sub_arr[index2][areaID];
+  }
+  return areaName;
+}
+</script>
+<!--省份]]-->
+<div class="addAddress" style="display: none;">
+<form action="__SITE__/index/Info/doAddr" method="post">
+<table  class="o_layout" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="o_label"><i>*</i><label>收件人姓名：</label></td>
+    <td>
+      <input type="text" placeholder="姓名，如张三" class="order_input"size="22" maxlength="14" value="" name="receiptName" id="receiptName"><span id="name"></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="o_label"><i>*</i><label>省市区：</label></td>
+    <td>
+      <input type="text" id="province" class="sf_input" name="province"/><span id="pro"></span>&nbsp;&nbsp;
+      <input type="text" id="city" class="sf_input" name="city"><span id="cit"></span>&nbsp;&nbsp;
+      <input type="text" id="district" class="sf_input" name="district"><span id="dis">可不填</span>
+    
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>街道地址：</label></td>
+    <td>
+      <input type="text" placeholder="具体街道地址" class="order_input" value=""size="70"maxlength="50" name="receiptStreet" id="receiptStreet"><span id="str"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>邮政编码：</label></td>
+    <td>
+      <input type="text" placeholder="" class="order_input"size="22" maxlength="6" value="" name="receiptZip" id="rezip"><span id="zip"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>手机号码：</label></td>
+    <td>
+      <input type="text" placeholder="请填写11位手机号码" class="order_input"size="22"maxlength="11" value="" name="receiptPhone" id="phone"><span id="ph"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>固定电话：</label></td>
+    <td>
+      <input type="text" size="5"  class="order_input" name="receiptFix" id="receiptFix" maxlength="4"><span id="Fix"></span> -
+      <input type="text" size="10" class="order_input" name="receiptFp" id="receiptFp" maxlength="7"><span id="Fp"></span>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:right;"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td  class="pad_btn">
+      <div class="act" style="font-size: 14px; padding: 5px;padding-left: 0px;">
+        <input type="submit" value="保存收货地址" class="save_btn">
+        <a style="" href="#" class="cancel_btn" onclick="isCancel()">取消</a>
+      </div>
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{if !empty($list)}
+<div class="modifyAddress" style="display: none; height: 330px;">
+<form action="__SITE__/index/Info/doAlter?id={$vo.receiptId}" method="post">
+<table  class="o_layout" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="o_label"><i>*</i><label>收件人姓名：</label></td>
+    <td>
+      <input type="text" placeholder="姓名，如张三" class="order_input"size="22" maxlength="14" value="" name="receiptName" id="receiptName"><span id="name"></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="o_label"><i>*</i><label>省市区：</label></td>
+    <td>
+      <input type="text" id="province" class="sf_input" name="province"/><span id="pro"></span>&nbsp;&nbsp;
+      <input type="text" id="city" class="sf_input" name="city"><span id="cit"></span>&nbsp;&nbsp;
+      <input type="text" id="district" class="sf_input" name="district"><span id="dis"></span>
+    
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>街道地址：</label></td>
+    <td>
+      <input type="text" placeholder="具体街道地址" class="order_input" value=""size="70"maxlength="50" name="receiptStreet" id="receiptStreet"><span id="str"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>邮政编码：</label></td>
+    <td>
+      <input type="text" placeholder="" class="order_input"size="22" maxlength="6" value="" name="receiptZip" id="rezip"><span id="zip"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>手机号码：</label></td>
+    <td>
+      <input type="text" placeholder="请填写11位手机号码" class="order_input"size="22"maxlength="11" value="" name="receiptPhone" id="phone"><span id="ph"></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="o_label"><i>*</i><label>固定电话：</label></td>
+    <td>
+      <input type="text" size="5"  class="order_input" name="receiptFix" id="receiptFix" maxlength="4"><span id="Fix"></span> -
+      <input type="text" size="10" class="order_input" name="receiptFp" id="receiptFp" maxlength="7"><span id="Fp"></span>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:right;"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td  class="pad_btn">
+      <div class="act" style="font-size: 14px; padding: 5px;padding-left: 0px;">
+        <input type="submit" value="保存收货地址" class="save_btn">
+        <a style="" href="#" class="cancel_btn" onclick="isCancel()">取消</a>
+      </div>
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{/if}
+<script>
+//姓名的验证
+  function checkName()
+  {
+    if($("#receiptName").val()) {
+
+      var reg = /^[\u4E00-\u9FA5]{2,4}$/;
+
+      if(!reg.test($("#receiptName").val())) {
+
+        $("#name").html('<font color="red">姓名长度不合法</font>');
+
+        return false;
+      }else {
+
+        $("#name").html('<font color="green">姓名合法</font>');
+
+        return true;
+      }
+    } else {
+
+      $("#name").html('<font color="red">姓名不能为空</font>');
+
+      return false;
+
+    }
+
+  }
+
+  $("#receiptName").blur(function () {
+
+    checkName();
+  });
+//省份的验证
+function checkProvince()
+{
+  if($("#province").val()) {
+
+
+      $("#pro").html('<font color="green"></font>');
+
+      return true;
+  } else {
+
+    $("#pro").html('<font color="red">省份不能为空</font>');
+
+    return false;
+
+  }
+
+}
+  $("#province").blur(function () {
+
+    checkProvince();
+  });
+  //
+  function checkCity()
+{
+  if($("#city").val()) {
+
+
+      $("#cit").html('<font color="green"></font>');
+
+      return true;
+  } else {
+
+    $("#cit").html('<font color="red">市不能为空</font>');
+
+    return false;
+
+  }
+
+}
+  $("#city").blur(function () {
+
+    checkCity();
+  });
+  //
+  function checkDistrict()
+{
+  if($("#district").val()) {
+
+
+      $("#dis").html('<font color="green"></font>');
+
+      return true;
+  } else {
+
+    $("#dis").html('<font color="red">县区不能为空</font>');
+
+    return false;
+
+  }
+
+}
+  $("#district").blur(function () {
+
+    checkDistrict();
+  });
+  //
+  function checkStreet()
+{
+  if($("#receiptStreet").val()) {
+
+
+      $("#str").html('<font color="green"></font>');
+
+      return true;
+  } else {
+
+    $("#str").html('<font color="red">街道地址不能为空</font>');
+
+    return false;
+
+  }
+
+}
+  $("#receiptStreet").blur(function () {
+
+    checkStreet();
+  });
+//邮编验证
+    function checkRezip()
+  {
+    if($("#rezip").val()) {
+
+      var reg =  /^[0-9]{6}$/;
+
+      if(!reg.test($("#rezip").val())) {
+
+        $("#zip").html('<font color="red">邮编不合法</font>');
+        return false;
+      } else {
+        $("#zip").html('<font color="green">邮编合法</font>');
+        return true;
+      }
+
+    } else {
+
+      $("#zip").html('<font color="red">邮编不能为空</font>');
+      return false;
+    }
+  }
+  $("#rezip").blur(function () {
+
+    checkRezip();
+  });
+
+  //手机号验证
+    function checkPhone()
+  {
+    if($("#phone").val()) {
+
+      var reg = /^1[34578]\d{9}$/;
+
+      if(!reg.test($("#phone").val())) {
+
+        $("#ph").html('<font color="red">手机号不合法</font>');
+        return false;
+      } else {
+        $("#ph").html('<font color="green">手机号合法</font>');
+        return true;
+      }
+
+    } else {
+
+      $("#ph").html('<font color="red">手机号不能为空</font>');
+      return false;
+    }
+  }
+  $("#phone").blur(function () {
+
+    checkPhone();
+  });
+  //固话的验证
+  //区号
+      function checkReceiptFix()
+  {
+    if($("#receiptFix").val()) {
+
+      var reg =  /^[0-9]{4}$/;
+
+      if(!reg.test($("#receiptFix").val())) {
+
+        $("#Fix").html('<font color="red">区号不合法</font>');
+        return false;
+      } else {
+        $("#Fix").html('<font color="green">区号合法</font>');
+        return true;
+      }
+
+    } else {
+
+      $("#Fix").html('<font color="red">区号不能为空</font>');
+      return false;
+    }
+  }
+  $("#receiptFix").blur(function () {
+
+    checkReceiptFix();
+  });    
+  //固话
+  function checkReceiptFp()
+  {
+    if($("#receiptFp").val()) {
+
+      var reg =  /^[0-9]{7}$/;
+
+      if(!reg.test($("#receiptFp").val())) {
+
+        $("#Fp").html('<font color="red">固话不合法</font>');
+        return false;
+      } else {
+        $("#Fp").html('<font color="green">固话合法</font>');
+        return true;
+      }
+
+    } else {
+
+      $("#Fp").html('<font color="red">固话不能为空</font>');
+      return false;
+    }
+  }
+  $("#receiptFp").blur(function () {
+
+    checkReceiptFp();
+  });
+</script>
+</div>
+<!--新增收货人信息]]-->
+</div>
+</div>
+<!--收货地址]]-->
+</div>
+</div>
+
+<script type="text/javascript" >
+//<![CDATA[
+$(function(){
+  var $div_li =$("div.menuA ul li");
+  $div_li.click(function(){
+
+    if($(this).hasClass('re_sel')){
+      $(this).removeClass('selected');
+      return false;
+    }else {
+      $(this).addClass("selected").siblings().removeClass("selected"); 
+    }
+    var index =  $div_li.index(this); 
+    $(".contB > div").eq(index).show().siblings().hide();
+  })
+})
+//]]>
+</script>
+</body>
+</html>
+.{include file="info/bottom" /}

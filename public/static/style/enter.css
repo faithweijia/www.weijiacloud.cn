@@ -1,0 +1,281 @@
+body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,img,table,fieldset,legend{margin:0; padding:0;}
+ul,li,ol{list-style:none;}
+img,fieldset{border:0; }
+img{display:block;}
+a{text-decoration:none; color:#333;}
+h1,h2,h3,h4,h5,h6{font-weight:100;}
+body{font-size:12px; font-family:"微软雅黑";}
+input,a{outline:none;}
+/*----------------------top--------------------------*/
+.lowtop{
+	width: 100%;
+	background: #323130;
+}
+.top{
+	width: 1200px;
+	height: 70px;
+	margin: 0 auto;
+}
+.topleft{
+	width: 30px;
+	height: 70px;
+	float: left;
+}
+.topright{
+	width: 211px;
+	height: 70px;
+	float: right;
+	display:block;
+}
+.topright a{
+	display: inline-block;
+	padding: 0 10px;
+	height:70px;
+	line-height:70px;
+	color: #999999;
+}
+/*----------------------body--------------------------*/
+.enter1{
+	width: 300px;
+	height: 200px;
+	background:#fdf8f4;
+	position: absolute;
+	left: -300px;
+	top:0px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px #000000;
+}
+.lowbody{
+	width: 100%;
+	background: #fdf8f4;
+	height:720px;
+	padding:30px 0;
+}
+.body{
+	position: relative;
+	margin:0 auto;
+	width: 1200px;
+	height: 720px;
+	background: url(../img_common/login.jpg) no-repeat left -100px;
+}
+button{
+	width: 310px;
+	height: 42px;
+	background: #f19108;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px;
+	color: white;
+	font-family: "微软雅黑";
+	border:0;
+}
+/*---------------------footlist---------------------------*/
+.lowfootlist{
+	width: 100%
+}
+.footlist{
+	width: 1200px;
+	height: 177px;
+	margin: 0 auto;
+}
+.footlist1{
+	padding-left: 15px;
+	width: 165px;
+	height: 177px;
+	float: left;
+}
+.footlist1 h4{
+	height: 54px;
+	line-height: 54px;
+}
+.footlist1 li{
+	height: 24px;
+	line-height: 24px;
+}
+.footlist1 li a{
+	color:#999;
+}
+.footlist1 li a:hover{
+	color:#433B7D;
+}
+.footlist2{
+	padding-left: 15px;
+	width: 376px;
+	height: 177px;
+	float: left;
+}
+.footlist2 h4{
+	height: 54px;
+	line-height: 54px;
+}
+.footlist2 li{
+	height: 24px;
+	line-height: 24px;
+}
+.footlist2 ul{
+	margin-top: 15px;
+	width: 376px;
+	height: 62px;
+}
+.footlist2 ul li{
+	width: 176px;
+	height: 22px;
+}
+.footlist2  span{
+	margin-right: 40px;
+}
+.lowfootnav{
+	background: #463b7f;
+	background-size: cover;
+}
+.footnav{
+	padding-left: 20px;
+	width:1180px;
+	height: 40px;
+	margin: 0 auto;
+}
+.footnav ul li{
+	float: left;
+	height: 40px;
+	width: 234px;
+	text-align: center;
+	font-size: 14px;
+	color: white;
+	line-height: 40px;
+
+}
+.footlist dl{
+	width: 80px;
+	height: 100px;
+	float: right;
+	margin-top: 30px;
+
+}
+.footlist dd{
+	text-align: center;
+}
+/*---------------------bottom---------------------------*/
+.lowbottom{
+	width: 100%;
+	background: #f5f5f5;
+}
+.bottom{
+	margin: 0 auto;
+ 	background: #f5f5f5;;
+	width: 1200px;
+	height: 225px;
+}
+.bottomleft{
+	text-align: center;
+	padding-top: 10px;
+	padding-left: 20px;
+	width: 1200px;
+	height: 215px;
+	float: left;
+}
+.bottomleft div{
+	line-height: 35px;
+}
+.bottomright{
+	padding-top: 30px;
+	padding-left: 20px;
+	width: 245px;
+	height: 195px;
+	float: right;
+}
+.bottomleft1{
+	text-align: center;
+	width: 1200px;
+	height: 35px;
+	color:#999;
+}
+.bottomleft1 a{
+	color:#999;
+}
+.bottomleft1 span{
+	margin-right: 20px;
+}
+.bottomleft2 {
+	padding-left: 300px;
+	width: 900px;
+}
+.bottomleft2 span{
+	float: left;
+	margin-right: 40px;
+}
+.bottomright dl{
+	margin-right: 10px;
+	float: left;
+}
+.bottomright dd{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+/*---------------------登录页面部分---------------------------*/
+.enter{
+	width: 310px;
+	padding: 30px 35px;
+	margin-top: 120px;
+	float: right;
+	box-shadow:0 0 23px rgba(0,0,0,.1);
+	background:#fff;
+}
+.enter h2{
+	width: 310px;
+	height: 20px;
+	text-align: center;
+	color: #f19108;
+	margin-bottom:24px;
+}
+.enter .input{
+	border: 1px solid #ccc;
+	width: 298px;
+	height: 20px;
+    line-height: 20px;
+    padding: 14px 5px;
+    border: 1px solid #dedede;
+    font-family:tahoma,arial,\5b8b\4f53,sans-serif;
+    margin-bottom: 15px;
+}
+.enter button{
+	width: 310px;
+	height: 50px;
+	margin-top: 20px;
+	font-size:16px;
+	margin-bottom: 8px;
+}
+.enter p{
+	width: 310px;
+	height: 20px;
+	line-height: 20px;
+	padding:5px 0;
+	color: #999;
+}
+.div .right{
+	margin-left: 100px;
+	color:#999;
+}
+.div{
+	width: 310px;
+	height: 15px;
+	line-height: 15px;
+}
+.div span{
+	color:#999;
+}
+.div span a{
+	color:#f19108;
+}
+.qq_img{
+	height:20px;
+	padding:5px 0;
+	padding-bottom: 30px;
+	
+}
+.qq_img a{
+	width:15px;
+	height:15px;
+	display:inline-block;
+	margin-right:5px;
+}

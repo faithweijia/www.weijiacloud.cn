@@ -1,0 +1,86 @@
+{include file="info/top" /}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的订单</title>
+<link href="__STATIC__/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	
+    
+<!--[[main-cont-->
+	<div class="userOrder w1000" style="width: 100%;">
+		<!--[[menuA-->
+		<!--menuA]]-->
+		<div class="contB">
+      <!--[[我的订单-->
+      <div class="">
+			 <div class="my-cont" style="margin-left: 200px; width: 900px;">
+          <div class="cont-tit">
+            <h2>订单详情</h2>
+          </div>
+          <div class="user_tab_all">
+              <div class="user_tab_menu order-status">
+              </div>
+              <div class="infro_user_box">
+                 <div>
+                    <div class="order_box">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0" class="tb_news" >
+                        <thead>
+                        <tr>
+                          <th class="g_infro">商品信息</th>
+                          <th class="g_money">商品详情</th>
+                          <th class="g_opt">商品数量</th>
+                          <th class="g_chos">商品售价</th>
+                        </tr>
+                      </thead>
+                      {volist name="list" id="vo"}
+
+                      <tbody>
+                        <tr>
+                        <td>
+                          <div class="item-operate"><a href="__SITE__/index/Index/particulars?id={$vo.detId}"><img src="{$vo.detPicture}" style="width: 50px;height: 50px;"></a></div>
+                          {$vo.detName}
+                        </td>
+                          <td>
+                            <span class="price">{$vo.detDesc}</span>
+                          </td>
+                          <td>
+                            {$vo.pokeNumber}
+                          </td>
+                          <td>
+                            <span>{$vo.detPrice}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                      {/volist}
+                      </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+             </div>
+              <script type="text/javascript" >
+            //<![CDATA[
+              $(function(){
+                  var $div_li =$(".user_tab_menu ul li");
+                  $div_li.click(function(){
+                  $(this).addClass("selected")            //当前<li>元素高亮
+                       .siblings().removeClass("selected");  //去掉其它同辈<li>元素的高亮
+                        var index =  $div_li.index(this);  // 获取当前点击的<li>元素 在 全部li元素中的索引。
+                  $(".infro_user_box > div")    //选取子节点。不选取子节点的话，会引起错误。如果里面还有div 
+                      .eq(index).show()   //显示 <li>元素对应的<div>元素
+                      .siblings().hide(); //隐藏其它几个同辈的<div>元素
+                })
+              })
+            //]]>
+            </script>
+       </div>
+      <!--我的订单]]-->
+    	</div>
+    </div>
+</body>
+</html>
+.{include file="info/bottom" /}s

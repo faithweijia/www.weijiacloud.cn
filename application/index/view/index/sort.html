@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>寺库网</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/style/index.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/jquery.imgscroll.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/index.js"></script>
+
+	<link href="__STATIC__/css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />
+	<link href="__STATIC__/css/styles.css" type="text/css" media="all" rel="stylesheet" />
+	<style type="text/css">
+	#topmenu{
+		width:810px;
+		margin:40px auto 0 auto;height:40px;
+		position:relative;
+	}
+	#topmenu ul {
+		margin:0;
+		padding:0;
+	}
+	#topmenu ul li {
+		float:left;
+		font-size:12px;	
+		list-style:none;
+		background:#222;
+		position:relative;
+		text-align:center;
+		text-transform:uppercase;
+		width:70px;
+		margin:0 10px;display:inline;	
+		line-height:30px;
+	}
+	#topmenu ul li a {
+		color:#aaa;	
+		text-decoration:none;
+	}
+	#topmenu ul li a:hover {
+		color:#fff;	
+	}
+	#topmenu ul li.active a{
+		color:#fff;font-weight:800;
+	}
+	
+	.box_skitter{margin:40px auto;}
+	</style>
+</head>
+<body>
+	<!--***********************header*************************-->
+	<div class="lowheader">
+		<div class="header">
+			<div class="header-left">
+				<div class="logo"><a href="javascript:void(0);"><img src="__STATIC__/img/logo.png"></a></div>
+				<div class="pic1"><a href="html/activityl"><img src="__STATIC__/img/1.gif"></a></div>
+			</div>
+			<div class="header-right">
+				<div class="header-right-up">
+					<ul class="list1" style="position: relative;">
+						<a href="javascript:void(0);" class="user_name"></a>
+						<li><span>欢迎光临寺库</span></li>
+						{if empty($data)}
+						<li><a id="vanish" href="/index/user/login">请登录</a></li>
+						<li id="li3"><a href="/index/user/register">免费注册</a></li>
+						<li><a href="javascript:void(0);">我的订单</a></li>
+						<li id="li5">
+							<a class="serve" href="javascript:void(0);">客户服务<span class="sp1"></span></a>
+							<ul class="list3">
+								<li><a href="javascript:void(0);">养护中心</a></li>
+								<li><a href="javascript:void(0);">帮助中心</a></li>
+								<li><a href="javascript:void(0);">贵宾专线</a></li>
+								<li><a href="javascript:void(0);">400-87-56789</a></li>
+							</ul>
+						</li>
+						{else}
+						<li><a id="vanish" href="javascript:void(0);">{$data}</a></li>
+						<li id="li3"><a href="loginout">退出</a></li>
+						<li><a href="javascript:void(0);">我的订单</a></li>
+						<li id="li5">
+							<a class="serve" href="javascript:void(0);">客户服务<span class="sp1"></span></a>
+							<ul class="list3">
+								<li><a href="javascript:void(0);">养护中心</a></li>
+								<li><a href="javascript:void(0);">帮助中心</a></li>
+								<li><a href="javascript:void(0);">贵宾专线</a></li>
+								<li><a href="javascript:void(0);">400-87-56789</a></li>
+							</ul>
+						</li>
+						<li><a href="javascript:void(0);">我的寺库</a></li>
+						{/if}
+						<li id="li6"><a href="javascript:void(0);">媒体聚焦</a></li>
+						<li id="li7"><span></span><a href="__SITE__/index/Carts/cartts">购物车</a></li>
+					</ul>
+				</div>
+				<div class="header-right-down">
+					<div class="search">
+						<input class="txt" type="text" placeholder="PRADA/普拉达"></input>
+						<button class="btn">sCooler</button>
+					</div>	
+					<div class="inputdown">
+					<ul class="list2">
+						<li><a href="javascript:void(0);">出行踏青必备包款</a></li>
+						<li><a href="javascript:void(0);">欧美明星最爱连衣裙</a></li>
+						<li><a href="javascript:void(0);">经典商务男女鞋特惠</a></li>
+						<li><a href="javascript:void(0);">钻石美饰甄选</a></li>
+						<li><a href="javascript:void(0);">春夏户外新品精选</a></li>
+					</ul>
+					</div>
+					<a href="javascript:void(0);" class="apps_bg"><img src="__STATIC__/img/apps_bg.gif"></a>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<!--***********************nav*************************-->
+	<div class="lownav">
+		<div class="nav">
+			<div class="left" id="first">
+				<a href="javascript:void(0);">全部奢品</a>
+				<ul id="second">
+					{volist name='cate' id='vo'}
+					{if $vo.cateParentId == 0}
+					<li id="li-1" class="second-li">
+						<h4><a href="__SITE__/index/Index/show?id={$vo.cateId}">{$vo.cateName}</a></h4>
+						<p>
+					{/if}
+							{volist name='groy' id='vl'}
+							{if $vl.cateParentId == $vo.cateId}
+							<a href="__SITE__/index/Index/sort?id={$vl.cateId}">{$vl.cateName}</a>
+							{/if}
+							{/volist}
+						</p>
+					</li>
+					{/volist}
+				</ul>
+			</div>
+			<div class="right">
+				<ul class="nav1">
+					<li><a href="indexl">首页</a></li>
+					{volist name='cate' id='vo'}
+					{if $vo.cateParentId == 0}
+					<li><a href="__SITE__/index/Index/show?id={$vo.cateId}">{$vo.cateName}</a></li>
+					{/if}
+					{/volist}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--***********************banner*************************-->
+
+	<div class="box_skitter box_skitter_large">
+	<ul>
+		<li><a href="#cube"><img src="__STATIC__/images/example/001.jpg" class="cube" /></a><div class="label_text"><p>cube</p></div></li>
+		<li><a href="#cubeRandom"><img src="__STATIC__/images/example/002.jpg" class="cubeRandom" /></a><div class="label_text"><p>cubeRandom</p></div></li>
+		<li><a href="#block"><img src="__STATIC__/images/example/003.jpg" class="block" /></a><div class="label_text"><p>block</p></div></li>
+		<li><a href="#cubeStop"><img src="__STATIC__/images/example/004.jpg" class="cubeStop" /></a><div class="label_text"><p>cubeStop</p></div></li>	
+	</ul>
+</div>
+
+<!--***********************piclist*************************-->
+
+	<div class="lowpiclist">
+		<div class="piclist">
+			<div class="picleft">
+				<a href="javascript:void(0);"><img src="__STATIC__/img/picright.jpg"></a>
+				<!--<div class="coverleft"></div>-->
+			</div>
+			<div class="piccenter">
+				<a href="javascript:void(0);"><img src="__STATIC__/img/piccenter.jpg"></a>
+			</div>
+			<div class="picright">
+				<a href="javascript:void(0);"><img src="__STATIC__/img/picleft.jpg"></a>
+			</div>
+		</div>
+	</div>
+<div class="loutimain" >
+	<div class="louti">
+		<!--***********************商城MALL*************************-->
+		<div class="lowmian lowmian1 ">
+			<div class="mian">
+				<a class="mian_a mian_d" href="javascript:void(0);"></a>
+				<ul class="mianlist1">
+					<li><span>今日上新：1591单</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{volist name='gory' id='vl'}
+	<div class="lowbao louti">
+		<div class="baonav">
+		{volist name='cate' id='vo'}
+		{if $vl.cateParentId == $vo.cateId}
+		<ul>
+			<li><a href="__SITE__/index/Index/show?id={$vo.cateId}"><h2>{$vo.cateName}</h2></a></li>
+			<li><a>{$vl.cateName}</a></li>
+			
+			
+		</ul>
+		{/if}
+		{/volist}
+		</div>
+		<div class="pro">
+			{volist name='good' id='vd'}
+			<div class="pro2">
+				<a href="__SITE__/index/Index/particulars?id={$vd.detId}">
+					<img  src="{$vd.detPicture}"/>
+					<div>
+						<h2>名称</h2>
+						<h4>{$vd.detName}</h4>
+					</div>
+				</a>
+			</div>
+			{/volist}
+	{/volist}
+	</div>
+
+<!--*************************猜你喜欢*****************************-->
+
+<div class="lowturnpic">
+	<div class="turnpic">
+		<div id="turnbox" class="g2">
+			<ul id="lunbo">
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_01.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_02.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_03.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_04.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_05.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_06.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_07.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_08.png" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_09.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+				<li>
+					<dl>
+						<dt><img src="__STATIC__/img/roll_10.jpg" /></dt>
+						<dd>雷朋经典</dd>
+					</dl>
+					
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+</div>
+<!--***********************footlist*************************-->
+
+<div class="lowfootlist">
+	<div class="footlist">
+		<ul class="footlist1">
+			<h4>新手指南</h4>
+			<li><a href="javascript:void(0);">注册新用户</a></li>
+			<li><a href="javascript:void(0);">网上订购流程</a></li>
+			<li><a href="javascript:void(0);">优惠券使用说明</a></li>
+			<li><a href="javascript:void(0);">海外战购买说明</a></li>
+			<li><a href="javascript:void(0);">美国站购买说明</a></li>
+		</ul>
+		<ul class="footlist1">
+			<h4>付款方式</h4>
+			<li><a href="javascript:void(0);">注册新用户</a></li>
+			<li><a href="javascript:void(0);">网上订购流程</a></li>
+			<li><a href="javascript:void(0);">优惠券使用说明</a></li>
+			<li><a href="javascript:void(0);">海外战购买说明</a></li>
+			<li><a href="javascript:void(0);">美国站购买说明</a></li>
+		</ul>
+		<ul class="footlist1">
+			<h4>物流配送</h4>
+			<li><a href="javascript:void(0);">注册新用户</a></li>
+			<li><a href="javascript:void(0);">网上订购流程</a></li>
+			<li><a href="javascript:void(0);">优惠券使用说明</a></li>
+			<li><a href="javascript:void(0);">海外战购买说明</a></li>
+			<li><a href="javascript:void(0);">美国站购买说明</a></li>
+		</ul>
+		<ul class="footlist1">
+			<h4>售后服务</h4>
+			<li><a href="javascript:void(0);">注册新用户</a></li>
+			<li><a href="javascript:void(0);">网上订购流程</a></li>
+			<li><a href="javascript:void(0);">优惠券使用说明</a></li>
+			<li><a href="javascript:void(0);">海外战购买说明</a></li>
+			<li><a href="javascript:void(0);">美国站购买说明</a></li>
+		</ul>
+		<ul class="footlist2">
+			<h4>跨境体验店</h4>
+			<li class="address">寺库通过在全球多地设立体验店和办事机构的方式，为高端消费者提供贴心的全球奢侈品一站式服务</li>
+			<ul>
+			<li><a href="javascript:void(0);"><span>北京</span><span>香港</span></a></li>
+			<li><a href="javascript:void(0);"><span>上海</span><span>米兰</span></a></li>
+			<li><a href="javascript:void(0);"><span>成都</span></a></li>
+			</ul>
+		</ul>
+	</div>
+</div>
+<div class="lowfootnav">
+	<div class="footnav">
+		<ul>
+			<li><i class="i1"></i>100%品质保证</li>
+			<li><i class="i2"></i>7天退换货</li>
+			<li><i class="i3"></i>专业维修保养</li>
+			<li><i class="i4"></i>权威奢侈品鉴定</li>
+			<li><i class="i5"></i>贴心管家物流</li>
+		</ul>
+	</div>
+</div>
+
+<!--***********************bottom*************************-->
+
+<div class="lowbottom">
+	<div class="bottom">
+		<div class="bottomleft">
+			<div class="bottomleft1">
+				<span><a href="javascript:void(0);">寺库网</a></span>
+				<span><a href="javascript:void(0);">寺库金融</a></span>
+				<span><a href="javascript:void(0);">寺库奢侈品保养</a></span>
+				<span><a href="javascript:void(0);">寺库招商</a></span>
+			</div>
+			<div class="bottomleft1">
+				<span>营业执照注册号102030405060</span>
+				<span>京公安备100010100010010</span>
+				<span>京ICP证110119京ICP备09084709号-3</span>
+				<span>ISO9001质量管理体系认证</span>
+			</div>
+			<div class="bottomleft1">
+				<span><a href="javascript:void(0);">加入寺库</a></span>
+				<span><a href="javascript:void(0);">联系我们</a></span>
+				<span><a href="javascript:void(0);">关于寺库</a></span>
+				<span><a href="javascript:void(0);">帮助中心</a></span>
+				<span><a href="javascript:void(0);">寺库微博</a></span>
+				<span><a href="javascript:void(0);">友情链接</a></span>
+				<span><a href="javascript:void(0);">奢侈品热词</a></span>
+				<span><a href="javascript:void(0);">奢侈品资讯</a></span>
+
+			</div>
+			<div class="bottomleft1">COPYRIGHT&copy2010-2016北京寺库商贸有限公司版权所有</div>
+			<div class="bottomleft1 bottomleft2">
+				<span><img src="__STATIC__/img_common/kexin1.jpg"></span>
+				<span><img src="__STATIC__/img_common/kexin2.jpg"></span>
+				<span><img src="__STATIC__/img_common/kexin3.jpg"></span>
+				<span><img src="__STATIC__/img_common/kexin4.jpg"></span>
+			</div>
+		</div>
+		<div class="bottomright">
+			<dl>
+				<dt><img src="__STATIC__/img_common/nav5.jpg"></dt>
+				<dd>手机客户端</dd>
+			</dl>
+			<dl>
+				<dt><img src="__STATIC__/img_common/nav6.jpg"></dt>
+				<dd>官方微信</dd>
+			</dl>
+		</div>
+	</div>	
+</div>
+</body>
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script type="text/javascript" language="javascript" src="__STATIC__/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" language="javascript" src="__STATIC__/js/jquery.skitter.js"></script>
+	
+	<!-- Init Skitter -->
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+			$('.box_skitter_large').skitter({
+				theme: 'clean',
+				numbers_align: 'center',
+				progressbar: true, 
+				dots: true, 
+				preview: true
+			});
+		});
+	</script>
+</html>

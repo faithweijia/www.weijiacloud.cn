@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找回密码</title>
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.12.2.min.js"></script>	
+	<link rel="stylesheet" type="text/css" href="__STATIC__/style/enter.css">
+	
+</head>
+<body>
+	<div class="lowtop">
+		<div class="top">
+			<div class="topleft"><a href="../indexl"><img src="__STATIC__/img_common/logo.png"></a></div>
+			<div class="topright">
+				<a href="/index/index/index">寺库首页</a>
+				<a href="javascript:void(0);">收藏寺库</a>
+				<a href="javascript:void(0);">寺库APP</a>
+			</div>
+		</div>
+	</div>
+	<div class="lowbody">
+		<div class="body">
+			<div class="enter">
+				<div class="enter1" style="display:none;"></div>
+				<h2>密码服务</h2>
+				<form action="{:url('User/reset')}" method="post">
+					<input type="hidden" name="reback" value="{$list.username}">
+					<input name = "password" id="password1"  class="password input" type="password" placeholder="新密码"></input>
+					<input name = "repassword" id="uesrpass2"  class="password input" type="password" placeholder="确认新密码"></input>
+					
+					<button id="btn2">立即找回</button>
+				</form>
+				
+				
+			</div>
+		</div>
+	</div>
+	
+	<!--***********************footlist*************************-->
+<script>
+
+	//刷新验证码函数
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        var img = document.getElementById('verify_img');
+        img.src = "/captcha?id="+ts;
+    }
+
+</script>
+	
+</body>
+</html>
+{layout name="layout" /}

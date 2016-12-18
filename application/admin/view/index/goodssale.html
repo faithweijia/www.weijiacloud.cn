@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="__ADSTATIC__/css/pintuer.css">
+<link rel="stylesheet" href="__ADSTATIC__/css/admin.css">
+<script src="__ADSTATIC__/js/jquery.js"></script>
+<script src="__ADSTATIC__/js/pintuer.js"></script>
+</head>
+<body>
+
+  <div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
+    <div class="padding border-bottom">
+    </div>
+    <table class="table table-hover text-center">
+      <tr>
+        <th width="100" style="text-align:left; padding-left:20px;">ID</th>
+        <th width="10%">价格</th>
+        <th>图片</th>
+        <th>名称</th>
+        <th>数量</th>
+        <th>分类名称</th>
+        <th width="10%">寄卖人</th>
+        <th width="310">操作</th>
+      </tr>
+        {volist name="list" id="vo"}
+        <tr>
+          <td style="text-align:left; padding-left:20px;">
+            {$vo.saleId}
+           </td>
+          <td name='name'>
+            {$vo.salePrice}
+          </td>
+          <td width="10%"><img src="{$vo.salePicture}" alt="" width="70" height="50" /></td>
+          <td>{$vo.saleName}</td>
+          <td><font color="#00CC99">{$vo.saleNumber}</font></td>
+          <td>{$vo.cateName}</td>
+          <td>{$vo.saleUser}</td>
+
+          <td>
+	          <div class="button-group"> 
+	          	<a class="button border-main" href="modSale?id={$vo.saleId}"><span class="icon-edit"></span> 是否同意</a> 
+	          	<a class="button border-red" href="delSale?id={$vo.saleId}" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> 
+	          </div>
+          </td>
+        </tr>
+        {/volist}
+      
+    </table>
+    <div style="margin-left:400px;">{$page}</div>
+  </div>
+
+<script type="text/javascript">
+
+
+//单个删除
+function del(id,mid,iscid){
+	if(confirm("您确定要删除吗?")){
+		
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="renderer" content="webkit">
+  <title>禁止IP</title>
+  <link rel="stylesheet" href="__ADSTATIC__/css/pintuer.css">
+  <link rel="stylesheet" href="__ADSTATIC__/css/admin.css">
+  <link rel="stylesheet" href="__ADSTATIC__/css/forbid.css">
+  <script src="__ADSTATIC__/js/jquery.js"></script>
+  <script src="__ADSTATIC__/js/pintuer.js"></script>
+</head>
+<body>
+    <div class="panel admin-panel">
+      <div class="padding border-bottom">
+        <ul class="search" style="padding-left:10px;">
+          <li> <a class="button border-main icon-plus-square-o" href=""> 禁止IP</a> </li>
+          <li>搜索：</li>
+          <li>
+            <input type="text" placeholder="请输入搜索IP" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+            <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
+          </ul>
+        </div>
+        <div class="jz">
+          
+          <div  style="height:60px;"></div>
+
+          <table class="tb" id="tips">
+            <tr>
+              <td class="tipsblock" s="1">
+                <ul type="circle">
+                  <li style="font-size:14px;"><b>-----被限制的IP地址不能访问本站。</b></li>
+                  <li style="font-size:14px;"><b>-----有效期如果设置为空则视为永久禁止。</b></li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <br /><br /><br />
+          <form name="cpform" method="post" action="{:url('index/forbidHandle')}" >
+            <table class="tb">
+              <tr class="header" style="background:url(__ADSTATIC__/img/bg1.png) ">
+                <th></th>
+                <th class="ip">IP 地址</th>
+                <th class="qs">起始时间</th>
+                <th class="zz">终止时间</th>
+                <th class="zz">操作</th>
+              </tr>
+              <tr class="hover">
+                <td>新增</td>
+                <td class="td28">
+                  <input type="text" class="txt" name="ip1" value="" size="3" maxlength="3" style="width: 60px; height: 25px;">.
+                  <input type="text" class="txt" name="ip2" value="" size="3" maxlength="3" style="width: 60px; height: 25px;">.
+                  <input type="text" class="txt" name="ip3" value="" size="3" maxlength="3" style="width: 60px; height: 25px;">.
+                  <input type="text" class="txt" name="ip4" value="" size="3" maxlength="3" style="width: 60px; height: 25px;">
+                </td>
+                <td class="td28" colspan="2">有效期: <input type="text" class="txt" name="valid"  size="3" style="width: 60px; height: 25px;"> 天</td>
+              </tr>
+
+              
+                {volist name="list" id="data"}
+                  <tr class="hover">
+                    <td>禁止列表</td>
+                    <td>{$data.forbidIp}</td>
+                    <td>{$data.create_time}</td>
+                    <td>{$data.over_time}</td>
+                    <td><a href="{:url('index/forbidDel',['forbidId'=>$data.forbidId])}" class="button border-red">解禁</a></td>
+                    </tr>
+                {/volist}
+              
+            </table>
+          
+          <div class="form-group">
+            <div class="label">
+              <label></label>
+            </div>
+            <div></div>
+            <div class="field" style="margin-left: 500px;">
+              <input type="submit" value="禁止" style="padding:5px 15px;">
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+  </body>
+  </html>
