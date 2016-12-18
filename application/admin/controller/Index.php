@@ -283,12 +283,12 @@ class Index extends Controller
 	}
 
 	//订单详情
-	public function orderDetail($orderUser)
+	public function orderDetail($orderId)
 	{
 		$list = Db::name('poke')
 				->alias('p')
 				->join('__GOODS__ g','p.pokeGoods = g.detId' )
-				->where('p.pokeUser',$orderUser)
+				->where('p.pokeOrder',$orderId)
 				->select();
 
 		$this->assign('list',$list);

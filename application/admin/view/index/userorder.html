@@ -71,7 +71,7 @@
                  <a class="button border-blue" href="">发货成功</a>
                  {/if}
                  <a class="button border-red" href="{:url('index/delOrder',['orderId'=>$data.orderId])}" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> 
-                 <a class="button border-green" href="{:url('index/orderDetail',['orderUser'=>$data.orderUser])}">订单详情</a>
+                 <a class="button border-green" href="{:url('index/orderDetail',['orderId'=>$data.orderId])}">订单详情</a>
                </div>
                </td>
              </tr>
