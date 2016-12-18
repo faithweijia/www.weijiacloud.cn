@@ -80,6 +80,7 @@
 <head>
     <meta charset="UTF-8">
     <title>系统发生错误</title>
+    <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
     <meta name="robots" content="noindex,nofollow" />
     <style>
         /* Base */
